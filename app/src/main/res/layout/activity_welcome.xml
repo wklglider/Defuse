@@ -50,4 +50,24 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="56dp" />
 
+    <ToggleButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="High Scores"
+        android:id="@+id/toScores"
+        android:layout_alignParentBottom="true"
+        android:layout_toLeftOf="@+id/gameName_textView"
+        android:layout_toStartOf="@+id/gameName_textView"
+        android:checked="false" />
+
+    <ToggleButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="I Need Help"
+        android:id="@+id/toHelp"
+        android:layout_alignTop="@+id/toScores"
+        android:layout_toRightOf="@+id/gameName_textView"
+        android:layout_toEndOf="@+id/gameName_textView"
+        android:checked="false" />
+
 </RelativeLayout>
