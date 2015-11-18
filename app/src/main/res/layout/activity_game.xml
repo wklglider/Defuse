@@ -34,9 +34,10 @@
                 android:layout_width="110dp"
                 android:layout_height="match_parent"
                 android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="Remaining Rounds"
+                android:text="Remaining"
                 android:id="@+id/roundTitle_textView"
-                android:layout_weight="0.13" />
+                android:layout_weight="0.13"
+                android:autoText="false" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -93,21 +94,18 @@
                 <Button
                     android:layout_width="95dp"
                     android:layout_height="71dp"
-                    android:text="New Button"
                     android:id="@+id/button4"
                     android:layout_column="0" />
 
                 <Button
                     android:layout_width="95dp"
                     android:layout_height="71dp"
-                    android:text="New Button"
                     android:id="@+id/button5"
                     android:layout_column="1" />
 
                 <Button
                     android:layout_width="95dp"
                     android:layout_height="71dp"
-                    android:text="New Button"
                     android:id="@+id/button6"
                     android:layout_column="2" />
 
@@ -126,21 +124,18 @@
                 <Button
                     android:layout_width="95dp"
                     android:layout_height="71dp"
-                    android:text="New Button"
                     android:id="@+id/button7"
                     android:layout_column="0" />
 
                 <Button
                     android:layout_width="95dp"
                     android:layout_height="71dp"
-                    android:text="New Button"
                     android:id="@+id/button8"
                     android:layout_column="1" />
 
                 <Button
                     android:layout_width="95dp"
                     android:layout_height="71dp"
-                    android:text="New Button"
                     android:id="@+id/button9"
                     android:layout_column="2" />
 
@@ -159,21 +154,18 @@
                 <Button
                     android:layout_width="95dp"
                     android:layout_height="71dp"
-                    android:text="New Button"
                     android:id="@+id/button10"
                     android:layout_column="0" />
 
                 <Button
                     android:layout_width="95dp"
                     android:layout_height="71dp"
-                    android:text="New Button"
                     android:id="@+id/button11"
                     android:layout_column="1" />
 
                 <Button
                     android:layout_width="95dp"
                     android:layout_height="71dp"
-                    android:text="New Button"
                     android:id="@+id/button12"
                     android:layout_column="2" />
 
@@ -182,7 +174,7 @@
                     android:layout_height="71dp"
                     android:id="@+id/imageView7"
                     android:layout_column="3"
-                    android:background="@drawable/v_rope" />
+                    android:background="@drawable/half_v_rope" />
             </TableRow>
         </TableLayout>
 
@@ -190,7 +182,54 @@
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="165dp"
-            android:weightSum="1">
+            android:weightSum="1"
+            android:layout_weight="1.32">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:weightSum="1"
+                android:background="@drawable/wheel">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Drag the first code image from the map"
+                    android:id="@+id/textView"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_weight="0.29" />
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="52dp"
+                    android:layout_weight="0.59">
+
+                    <Button
+                        android:layout_width="95dp"
+                        android:layout_height="71dp"
+                        android:id="@+id/button2" />
+
+                    <Button
+                        android:layout_width="95dp"
+                        android:layout_height="71dp"
+                        android:id="@+id/button3" />
+
+                    <Button
+                        android:layout_width="95dp"
+                        android:layout_height="71dp"
+                        android:id="@+id/button13" />
+
+                </LinearLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="45dp">
 
             <Button
                 android:layout_width="wrap_content"
@@ -199,60 +238,13 @@
                 android:id="@+id/button"
                 android:layout_gravity="bottom" />
 
-            <LinearLayout
-                android:orientation="vertical"
-                android:layout_width="193dp"
-                android:layout_height="match_parent"
-                android:weightSum="1"
-                android:background="@drawable/clock">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Drag the first code image from the map"
-                    android:id="@+id/textView"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_weight="0.72" />
-
-                <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="52dp">
-
-                    <Button
-                        android:layout_width="49dp"
-                        android:layout_height="wrap_content"
-                        android:text="#"
-                        android:id="@+id/button2" />
-
-                    <Button
-                        android:layout_width="46dp"
-                        android:layout_height="wrap_content"
-                        android:text="$"
-                        android:id="@+id/button3" />
-
-                    <Button
-                        android:layout_width="44dp"
-                        android:layout_height="wrap_content"
-                        android:text="%"
-                        android:id="@+id/button13" />
-
-                    <Button
-                        android:layout_width="43dp"
-                        android:layout_height="wrap_content"
-                        android:text="*"
-                        android:id="@+id/button14" />
-
-                </LinearLayout>
-            </LinearLayout>
-
             <Button
-                android:layout_width="92dp"
-                android:layout_height="37dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:text="Help"
                 android:id="@+id/button15"
                 android:layout_gravity="bottom" />
-
         </LinearLayout>
+
     </LinearLayout>
 </LinearLayout>
