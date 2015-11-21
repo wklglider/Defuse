@@ -8,4 +8,12 @@
     <string name="exit_score">Go Back</string>
     <string name="help_content">The game displays outline maps with Greek characters inside. When every round starts, Greek characters will display in national maps for about 3 seconds and then disappear. The player should remember the outline locations and identify the correct match letter base on the outline. The player has to solve as many puzzles as they can within a time limit. The app will keep track of individual players’ high scores(Time elapsed).</string>
     <string name="help_title">Guide</string>
+    <string name="timer_text">Timer</string>
+    <string name="timer_hint">01:00:00</string>
+    <string name="remaining_text">Remaining</string>
+    <string name="remaining_hint">09/10</string>
+    <string name="fuse">Fuse</string>
+    <string name="playground">Playground</string>
+    <string name="help_button_2">Help</string>
+    <string name="home_button">Home</string>
 </resources>
