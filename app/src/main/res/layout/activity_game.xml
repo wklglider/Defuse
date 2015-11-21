@@ -52,96 +52,100 @@
             android:textSize="18sp" />
     </LinearLayout>
 
-    <TableLayout
+    <TableRow
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_below="@+id/linearLayout"
-        android:layout_centerHorizontal="true">
+        android:layout_below="@+id/linearLayout">
 
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+        <ImageView
+            android:id="@+id/bombaImageView"
+            android:layout_width="80dp"
+            android:layout_height="match_parent"
+            android:layout_column="0"
+            android:background="@drawable/bomb"
+            android:contentDescription="@string/fuse" />
 
-            <ImageView
-                android:id="@+id/bombaImageView"
-                android:layout_width="80dp"
-                android:layout_height="match_parent"
-                android:layout_column="0"
-                android:background="@drawable/bomb" />
+        <ImageView
+            android:id="@+id/ropeImageView9"
+            android:layout_width="25dp"
+            android:layout_height="match_parent"
+            android:layout_column="1"
+            android:background="@drawable/rope"
+            android:contentDescription="@string/fuse" />
 
-            <ImageView
-                android:id="@+id/ropeImageView9"
-                android:layout_width="25dp"
-                android:layout_height="match_parent"
-                android:layout_column="1"
-                android:background="@drawable/rope" />
+        <ImageView
+            android:id="@+id/ropeImageView8"
+            android:layout_width="25dp"
+            android:layout_height="match_parent"
+            android:layout_column="2"
+            android:background="@drawable/rope"
+            android:contentDescription="@string/fuse" />
 
-            <ImageView
-                android:id="@+id/ropeImageView8"
-                android:layout_width="25dp"
-                android:layout_height="match_parent"
-                android:layout_column="2"
-                android:background="@drawable/rope" />
+        <ImageView
+            android:id="@+id/ropeImageView7"
+            android:layout_width="25dp"
+            android:layout_height="match_parent"
+            android:layout_column="3"
+            android:background="@drawable/rope"
+            android:contentDescription="@string/fuse" />
 
-            <ImageView
-                android:id="@+id/ropeImageView7"
-                android:layout_width="25dp"
-                android:layout_height="match_parent"
-                android:layout_column="3"
-                android:background="@drawable/rope" />
+        <ImageView
+            android:id="@+id/ropeImageView6"
+            android:layout_width="25dp"
+            android:layout_height="match_parent"
+            android:layout_column="4"
+            android:background="@drawable/rope"
+            android:contentDescription="@string/fuse" />
 
-            <ImageView
-                android:id="@+id/ropeImageView6"
-                android:layout_width="25dp"
-                android:layout_height="match_parent"
-                android:layout_column="4"
-                android:background="@drawable/rope" />
+        <ImageView
+            android:id="@+id/ropeImageView5"
+            android:layout_width="25dp"
+            android:layout_height="match_parent"
+            android:layout_column="5"
+            android:background="@drawable/rope"
+            android:contentDescription="@string/fuse" />
 
-            <ImageView
-                android:id="@+id/ropeImageView5"
-                android:layout_width="25dp"
-                android:layout_height="match_parent"
-                android:layout_column="5"
-                android:background="@drawable/rope" />
+        <ImageView
+            android:id="@+id/ropeImageView4"
+            android:layout_width="25dp"
+            android:layout_height="match_parent"
+            android:layout_column="6"
+            android:background="@drawable/rope"
+            android:contentDescription="@string/fuse" />
 
-            <ImageView
-                android:id="@+id/ropeImageView4"
-                android:layout_width="25dp"
-                android:layout_height="match_parent"
-                android:layout_column="6"
-                android:background="@drawable/rope" />
+        <ImageView
+            android:id="@+id/ropeImageView3"
+            android:layout_width="25dp"
+            android:layout_height="match_parent"
+            android:layout_column="7"
+            android:background="@drawable/rope"
+            android:contentDescription="@string/fuse" />
 
-            <ImageView
-                android:id="@+id/ropeImageView3"
-                android:layout_width="25dp"
-                android:layout_height="match_parent"
-                android:layout_column="7"
-                android:background="@drawable/rope" />
+        <ImageView
+            android:id="@+id/ropeImageView2"
+            android:layout_width="25dp"
+            android:layout_height="match_parent"
+            android:layout_column="8"
+            android:background="@drawable/rope"
+            android:contentDescription="@string/fuse" />
 
-            <ImageView
-                android:id="@+id/ropeImageView2"
-                android:layout_width="25dp"
-                android:layout_height="match_parent"
-                android:layout_column="8"
-                android:background="@drawable/rope" />
+        <ImageView
+            android:id="@+id/ropeImageView1"
+            android:layout_width="25dp"
+            android:layout_height="match_parent"
+            android:layout_column="9"
+            android:background="@drawable/rope"
+            android:contentDescription="@string/fuse" />
 
-            <ImageView
-                android:id="@+id/ropeImageView1"
-                android:layout_width="25dp"
-                android:layout_height="match_parent"
-                android:layout_column="9"
-                android:background="@drawable/rope" />
+        <ImageView
+            android:id="@+id/ropeImageView0"
+            android:layout_width="25dp"
+            android:layout_height="match_parent"
+            android:layout_column="10"
+            android:background="@drawable/rope"
+            android:contentDescription="@string/fuse" />
 
-            <ImageView
-                android:id="@+id/ropeImageView0"
-                android:layout_width="25dp"
-                android:layout_height="match_parent"
-                android:layout_column="10"
-                android:background="@drawable/rope" />
-
-        </TableRow>
-
-    </TableLayout>
+    </TableRow>
 
     <TableLayout
         android:id="@+id/tableLayout"
@@ -156,18 +160,21 @@
 
             <Button
                 android:id="@+id/mapButton0"
+                style="@style/Base.ThemeOverlay.AppCompat.ActionBar"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:layout_column="1" />
 
             <Button
                 android:id="@+id/mapButton1"
+                style="@style/Base.ThemeOverlay.AppCompat.ActionBar"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:layout_column="2" />
 
             <Button
                 android:id="@+id/mapButton2"
+                style="@style/Base.ThemeOverlay.AppCompat.ActionBar"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:layout_column="3" />
@@ -179,18 +186,21 @@
 
             <Button
                 android:id="@+id/mapButton3"
+                style="@style/Base.ThemeOverlay.AppCompat.ActionBar"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:layout_column="1" />
 
             <Button
                 android:id="@+id/mapButton4"
+                style="@style/Base.ThemeOverlay.AppCompat.ActionBar"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:layout_column="2" />
 
             <Button
                 android:id="@+id/mapButton5"
+                style="@style/Base.ThemeOverlay.AppCompat.ActionBar"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:layout_column="3" />
@@ -202,33 +212,26 @@
 
             <Button
                 android:id="@+id/mapButton6"
+                style="@style/Base.ThemeOverlay.AppCompat.ActionBar"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:layout_column="1" />
 
             <Button
                 android:id="@+id/mapButton7"
+                style="@style/Base.ThemeOverlay.AppCompat.ActionBar"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:layout_column="2" />
 
             <Button
                 android:id="@+id/mapButton8"
+                style="@style/Base.ThemeOverlay.AppCompat.ActionBar"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:layout_column="3" />
         </TableRow>
 
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <ImageView
-                android:id="@+id/imageView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_column="2" />
-        </TableRow>
     </TableLayout>
 
     <LinearLayout
@@ -242,18 +245,22 @@
 
         <Button
             android:id="@+id/homeButton"
+            style="@style/Base.Widget.AppCompat.ActionBar.TabBar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
+            android:layout_marginEnd="80dp"
             android:layout_marginRight="80dp"
             android:text="@string/home_button" />
 
         <Button
             android:id="@+id/helpButton"
+            style="@style/Base.Widget.AppCompat.ActionBar.TabBar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
             android:layout_marginLeft="80dp"
+            android:layout_marginStart="80dp"
             android:text="@string/help_button_2" />
     </LinearLayout>
 
@@ -263,7 +270,8 @@
         android:layout_height="130dp"
         android:layout_above="@+id/linearLayout2"
         android:layout_centerHorizontal="true"
-        android:background="@drawable/wheel" />
+        android:background="@drawable/wheel"
+        android:contentDescription="@string/playground" />
 
     <Button
         android:id="@+id/button2"
@@ -271,7 +279,8 @@
         android:layout_height="100dp"
         android:layout_alignBottom="@+id/imageView2"
         android:layout_marginBottom="10dp"
-        android:layout_marginLeft="20dp" />
+        android:layout_marginLeft="20dp"
+        android:layout_marginStart="20dp" />
 
     <Button
         android:id="@+id/button3"
@@ -279,6 +288,7 @@
         android:layout_height="100dp"
         android:layout_alignTop="@+id/button2"
         android:layout_marginLeft="8dp"
+        android:layout_marginStart="8dp"
         android:layout_toEndOf="@+id/button2"
         android:layout_toRightOf="@+id/button2" />
 
@@ -288,6 +298,7 @@
         android:layout_height="100dp"
         android:layout_alignTop="@+id/button3"
         android:layout_marginLeft="7dp"
+        android:layout_marginStart="7dp"
         android:layout_toEndOf="@+id/button3"
         android:layout_toRightOf="@+id/button3" />
 
