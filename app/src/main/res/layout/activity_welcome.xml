@@ -12,7 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Defuse"
+        android:text="@string/app_name"
         android:id="@+id/gameName_textView"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
@@ -25,7 +25,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Enter Your Name"
+        android:text="@string/name_text"
         android:id="@+id/playerName_textView"
         android:layout_below="@+id/gameName_textView"
         android:layout_centerHorizontal="true"
@@ -39,35 +39,39 @@
         android:id="@+id/playerName_editText"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
-        android:background="#ffffff" />
+        android:background="#ffffff"
+        android:inputType="textCapWords" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Start"
+        android:text="@string/start_button"
         android:id="@+id/start_button"
         android:layout_below="@+id/playerName_editText"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="56dp" />
+        android:layout_marginTop="56dp"
+        android:clickable="true" />
 
-    <ToggleButton
+    <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="High Scores"
+        android:text="@string/score_button"
         android:id="@+id/toScores"
         android:layout_alignParentBottom="true"
         android:layout_toLeftOf="@+id/gameName_textView"
         android:layout_toStartOf="@+id/gameName_textView"
-        android:checked="false" />
+        android:clickable="true"
+        android:onClick="loadScorePage" />
 
-    <ToggleButton
+    <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="I Need Help"
+        android:text="@string/help_button"
         android:id="@+id/toHelp"
         android:layout_alignTop="@+id/toScores"
         android:layout_toRightOf="@+id/gameName_textView"
         android:layout_toEndOf="@+id/gameName_textView"
-        android:checked="false" />
+        android:clickable="true"
+        android:onClick="loadHelpPage" />
 
 </RelativeLayout>

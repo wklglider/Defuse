@@ -10,9 +10,9 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="The game displays outline maps with Greek characters inside. When every round starts, Greek characters will display in national maps for about 3 seconds and then disappear. The player should remember the outline locations and identify the correct match letter base on the outline. The player has to solve as many puzzles as they can within a time limit. The app will keep track of individual players’ high scores(Time elapsed)."
+        android:text="@string/help_content"
         android:id="@+id/textView"
-        android:textSize="20dp"
+        android:textSize="20sp"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
@@ -22,19 +22,20 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Guide"
+        android:text="@string/help_title"
         android:id="@+id/textView2"
         android:textStyle="bold|italic"
-        android:textSize="35dp"
+        android:textSize="35sp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
 
-    <ToggleButton
+    <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="I Got It"
+        android:text="@string/exit_help"
         android:id="@+id/toWelcome"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:checked="false" />
+        android:checked="false"
+        android:onClick="loadWelcomePage" />
 </RelativeLayout>
