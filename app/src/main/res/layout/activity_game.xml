@@ -252,7 +252,8 @@
             android:layout_gravity="bottom"
             android:layout_marginEnd="80dp"
             android:layout_marginRight="80dp"
-            android:text="@string/home_button" />
+            android:text="@string/home_button"
+            android:onClick="exit_game" />
 
         <Button
             android:id="@+id/helpButton"

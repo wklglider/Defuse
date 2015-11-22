@@ -21,18 +21,6 @@
         android:textColor="#ffffff"
         android:textSize="@dimen/abc_text_size_display_1_material" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="@string/name_text"
-        android:id="@+id/playerName_textView"
-        android:layout_below="@+id/gameName_textView"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="79dp"
-        android:textStyle="bold"
-        android:textColor="#ffffff" />
-
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -40,7 +28,8 @@
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
         android:background="#ffffff"
-        android:inputType="textCapWords" />
+        android:inputType="textCapWords"
+        android:hint="Enter your name here" />
 
     <Button
         android:layout_width="wrap_content"
@@ -50,7 +39,8 @@
         android:layout_below="@+id/playerName_editText"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="56dp"
-        android:clickable="true" />
+        android:clickable="true"
+        android:onClick="start_new_game" />
 
     <Button
         android:layout_width="wrap_content"
