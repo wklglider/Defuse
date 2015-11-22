@@ -97,6 +97,12 @@ public class GameActivity extends AppCompatActivity {
             //reset boolean for next round
             startNextRound = false;
         }
+
+        //Get maps and Greek Character
+        Map[] mp = game.getMaps();
+        GreekCharacter[] gc = game.getGreekChar();
+
+
     }
 
     //Start timer count down
@@ -126,11 +132,11 @@ public class GameActivity extends AppCompatActivity {
 //        dbOp.putInformation(player,levelPlayed,score);
     }
 
-    public void setScore() {//*******************************************
+    public void setScore() {
 
     }
 
-    public int isInTopRank(int score) {//*******************************************
+    public int isInTopRank(int score) {
         int rank = -1;
         return rank;
     }
