@@ -2,11 +2,13 @@ package csci3320.defuse;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 import android.os.CountDownTimer;
 import java.util.concurrent.TimeUnit;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 
 public class GameActivity extends AppCompatActivity {
     public String playerName;
@@ -129,5 +131,12 @@ public class GameActivity extends AppCompatActivity {
     public int isInTopRank(int score) {//*******************************************
         int rank = -1;
         return rank;
+    }
+
+    public void loadHomePage(View view) {
+        gameCancelled=true;
+        this.finish();
+        final Intent home = new Intent(this,WelcomeActivity.class);
+        startActivity(home);
     }
 }
