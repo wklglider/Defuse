@@ -10,7 +10,7 @@ import android.content.DialogInterface;
 
 public class GameActivity extends AppCompatActivity {
     public String playerName;
-    public DufuseGame newGame;
+    public DefuseGame newGame;
     boolean gameCancelled = false;
 
 
@@ -33,7 +33,7 @@ public class GameActivity extends AppCompatActivity {
     public void startNewGame()
     {
         //create new game
-        newGame = new DufuseGame();
+        newGame = new DefuseGame();
 
         //clean up variables
         txtScore.setText("");
