@@ -27,10 +27,9 @@ public class DefuseGame {
         for(int i = 0; i < map.length; i++) {
             String fileName = "map" + i;
 //            Context context = imageView.getContext();
-//            Context context = imageView.getContext();
-//            int fileID = context.getResources().getIdentifier(fileName, "drawable", context.getPackageName());
-//            map[i] = new Map("Map" + i, fileID);// Needs to change
-            map[i] = new Map(fileName, R.drawable.map0);
+            int fileID = context.getResources().getIdentifier(fileName, "drawable", context.getPackageName());
+            map[i] = new Map("Map" + i, fileID);// Needs to change
+//            map[i] = new Map(fileName, R.drawable.map0);
             maps.add(map[i]);
         }
     }
@@ -49,4 +48,5 @@ public class DefuseGame {
     private int score;
     private ArrayList<Map> maps;
     private ArrayList<GreekCharacter> greekChars;
+    private Context context;
 }
