@@ -1,6 +1,6 @@
 package csci3320.defuse;
 
-import java.util.List;
+import java.util.ArrayList;
 
 public class DefuseGame {
     DefuseGame() {
@@ -18,8 +18,11 @@ public class DefuseGame {
     }
 
     public void Maps() {
+        Map map[] = new Map[43];
+        maps = new ArrayList<Map>();
         for(int i = 0; i < 43; i++) {
-
+            map[i] = new Map("Map" + i, R.drawable.map0);// Needs to change
+            maps.add(map[i]);
         }
     }
 
@@ -28,6 +31,6 @@ public class DefuseGame {
     }
 
     private int point;
-    private List<Map> maps;
-    private List<GreekChar> greekChars;
+    private ArrayList<Map> maps;
+    private ArrayList<GreekChar> greekChars;
 }
