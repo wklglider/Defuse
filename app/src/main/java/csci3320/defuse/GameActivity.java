@@ -2,7 +2,7 @@ package csci3320.defuse;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.widget.EditText;
+import android.widget.TextView;
 import android.os.CountDownTimer;
 import java.util.concurrent.TimeUnit;
 import android.app.AlertDialog;
@@ -10,8 +10,9 @@ import android.content.DialogInterface;
 
 public class GameActivity extends AppCompatActivity {
     public String playerName;
-    public DefuseGame newGame;
+    public DefuseGame defuseGame;
     boolean gameCancelled = false;
+    boolean startNextRound;
 
 
     @Override
@@ -33,26 +34,26 @@ public class GameActivity extends AppCompatActivity {
     public void startNewGame()
     {
         //create new game
-        newGame = new DefuseGame();
+        defuseGame = new DefuseGame();
 
         //clean up variables
-        txtScore.setText("");
+//        txtScore.setText("");
 
         //start the countdown timer and start the round
-        gameCancelled=false;
+        gameCancelled = false;
         TimerCountDown();
         startNextRound = true;
-        NextRound(newGame);
+        NextRound(defuseGame);
     }
 
     public void gameOver(){
         String msgTitle = "GAME OVER";
-        int roundScore = newGame.GetTotalPoints();
-        int index = isHighScore(roundScore);
+        int finalScore = defuseGame.getScore();
+        int index = isInTopRank(finalScore);
 
         if(index >= 0){
             msgTitle = "NEW HIGH SCORE!!!";
-            setScore(playerName,newGame.GetLevel(),roundScore,index);
+            setScore();//*************************************
         }
 
         //CREATE END GAME ALERT
@@ -63,7 +64,7 @@ public class GameActivity extends AppCompatActivity {
 
         // set dialog message
         alertDialogBuilder
-                .setMessage("Final Score: " + roundScore + "\n\nPLAY AGAIN?")
+                .setMessage("Final Score: " + finalScore + "\n\nPLAY AGAIN?")
                 .setCancelable(false)
                 .setPositiveButton("Yes",new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog,int id) {
@@ -86,13 +87,21 @@ public class GameActivity extends AppCompatActivity {
 
     }
 
+    //Initial next round
+    public void NextRound(DefuseGame game) {
+        if (startNextRound) {
+            //reset boolean for next round
+            startNextRound = false;
+        }
+    }
+
     //Start timer count down
     public void TimerCountDown (){
-        final EditText timer = (EditText) findViewById( R.id.timerContent_textView );
+        final TextView timer = (TextView) findViewById( R.id.timerContent_textView );
         new CountDownTimer(90000, 50) { // adjust the milli seconds here
 
             public void onTick(long millisUntilFinished) {
-                timer.setText(""+String.format("%02d : %02d",
+                timer.setText("" + String.format("%02d : %02d",
                         TimeUnit.MILLISECONDS.toSeconds( millisUntilFinished),
                         TimeUnit.MILLISECONDS.toMillis(millisUntilFinished) -
                                 TimeUnit.SECONDS.toMillis(TimeUnit.MILLISECONDS.toSeconds(millisUntilFinished))));
@@ -105,5 +114,20 @@ public class GameActivity extends AppCompatActivity {
                 timer.setText("Time up!");
             }
         }.start();
+    }
+
+    //Calculate score
+    public void calculateScore(String player, long remainingTime, int roundNumber){
+//        DatabaseOperations dbOp = new DatabaseOperations(this);
+//        dbOp.putInformation(player,levelPlayed,score);
+    }
+
+    public void setScore() {//*******************************************
+
+    }
+
+    public int isInTopRank(int score) {//*******************************************
+        int rank = -1;
+        return rank;
     }
 }
