@@ -3,6 +3,10 @@ package csci3320.defuse;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+<<<<<<< HEAD
+import android.view.WindowManager;
+=======
+>>>>>>> master
 import android.widget.TextView;
 import android.os.CountDownTimer;
 import java.util.concurrent.TimeUnit;
@@ -20,6 +24,7 @@ public class GameActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_game);
 
         //Game start
@@ -133,10 +138,15 @@ public class GameActivity extends AppCompatActivity {
         return rank;
     }
 
+<<<<<<< HEAD
+    public void exit_game(View view) {
+        onBackPressed();
+=======
     public void loadHomePage(View view) {
         gameCancelled=true;
         this.finish();
         final Intent home = new Intent(this,WelcomeActivity.class);
         startActivity(home);
+>>>>>>> master
     }
 }
