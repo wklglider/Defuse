@@ -2,7 +2,7 @@ package csci3320.defuse;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.widget.EditText;
+import android.widget.TextView;
 import android.os.CountDownTimer;
 import java.util.concurrent.TimeUnit;
 import android.app.AlertDialog;
@@ -97,7 +97,7 @@ public class GameActivity extends AppCompatActivity {
 
     //Start timer count down
     public void TimerCountDown (){
-        final EditText timer = (EditText) findViewById( R.id.timerContent_textView );
+        final TextView timer = (TextView) findViewById( R.id.timerContent_textView );
         new CountDownTimer(90000, 50) { // adjust the milli seconds here
 
             public void onTick(long millisUntilFinished) {
