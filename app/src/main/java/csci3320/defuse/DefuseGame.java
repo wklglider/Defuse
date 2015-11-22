@@ -4,17 +4,17 @@ import java.util.ArrayList;
 
 public class DefuseGame {
     DefuseGame() {
-        point = 0;
+        score = 0;
         Maps();
         GreekChars();
     }
 
-    public void setPoint(int val) {
-        this.point = val;
+    public void setScore(int val) {
+        this.score = val;
     }
 
-    public int getPoint() {
-        return this.point;
+    public int getScore() {
+        return this.score;
     }
 
     public void Maps() {
@@ -30,7 +30,7 @@ public class DefuseGame {
 
     }
 
-    private int point;
+    private int score;
     private ArrayList<Map> maps;
     private ArrayList<GreekChar> greekChars;
 }
