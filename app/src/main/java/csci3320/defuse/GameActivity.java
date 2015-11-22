@@ -95,6 +95,12 @@ public class GameActivity extends AppCompatActivity {
             //reset boolean for next round
             startNextRound = false;
         }
+
+        //Get maps and Greek Character
+        Map[] mp = game.getMaps();
+        GreekCharacter[] gc = game.getGreekChar();
+
+
     }
 
     //Start timer count down
