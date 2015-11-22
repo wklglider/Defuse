@@ -132,11 +132,11 @@ public class GameActivity extends AppCompatActivity {
 //        dbOp.putInformation(player,levelPlayed,score);
     }
 
-    public void setScore() {//*******************************************
+    public void setScore() {
 
     }
 
-    public int isInTopRank(int score) {//*******************************************
+    public int isInTopRank(int score) {
         int rank = -1;
         return rank;
     }
