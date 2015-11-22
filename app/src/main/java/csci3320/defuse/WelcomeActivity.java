@@ -20,10 +20,12 @@ public class WelcomeActivity extends AppCompatActivity {
     public void loadHelpPage(View view) {
         Intent help = new Intent(this,HelpActivity.class);
         startActivity(help);
+        finish();
     }
 
     public void loadScorePage(View view) {
         Intent score = new Intent(this,ScoreActivity.class);
         startActivity(score);
+        finish();
     }
 }
