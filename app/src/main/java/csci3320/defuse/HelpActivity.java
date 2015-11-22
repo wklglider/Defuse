@@ -16,5 +16,6 @@ public class HelpActivity extends AppCompatActivity {
     public void loadWelcomePage(View view) {
         Intent welcome = new Intent(this,WelcomeActivity.class);
         startActivity(welcome);
+        finish();
     }
 }
