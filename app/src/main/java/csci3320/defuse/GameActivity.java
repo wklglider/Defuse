@@ -6,6 +6,9 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.TextView;
 import android.os.CountDownTimer;
+
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.concurrent.TimeUnit;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -31,6 +34,7 @@ public class GameActivity extends AppCompatActivity {
     boolean gameCancelled = false;
     boolean startNextRound;
     Button[] grid = new Button[9];
+    Button[] quesGrid = new Button[3];
     Context context;
     TextView timer;
     TextView roundCounter;
@@ -57,13 +61,8 @@ public class GameActivity extends AppCompatActivity {
         findViewById(R.id.recieverButton0).setOnDragListener(dragListener);
         findViewById(R.id.recieverButton1).setOnDragListener(dragListener);
         findViewById(R.id.recieverButton2).setOnDragListener(dragListener);
-//        //Get grid for each map button
-//        for(int i = 0; i < grid.length; i++) {
-//            String buttonName = "mapButton" + i;
-//            int buttonID = context.getResources().getIdentifier(buttonName, "id", context.getPackageName());
-//            grid[i] = (Button)findViewById(buttonID);
-//        }
 
+        //Get grid for each map button
         grid[0] = (Button)findViewById(R.id.mapButton0);
         grid[1] = (Button)findViewById(R.id.mapButton1);
         grid[2] = (Button)findViewById(R.id.mapButton2);
@@ -73,6 +72,11 @@ public class GameActivity extends AppCompatActivity {
         grid[6] = (Button)findViewById(R.id.mapButton6);
         grid[7] = (Button)findViewById(R.id.mapButton7);
         grid[8] = (Button)findViewById(R.id.mapButton8);
+
+        //Get questionGrid for the receive buttons
+        quesGrid[0] = (Button)findViewById(R.id.recieverButton0);
+        quesGrid[1] = (Button)findViewById(R.id.recieverButton1);
+        quesGrid[2] = (Button)findViewById(R.id.recieverButton2);
 
         //Get element ready for the game
         timer = (TextView) findViewById( R.id.timerContent_textView );
@@ -159,9 +163,19 @@ public class GameActivity extends AppCompatActivity {
             GreekCharacter[] gc = game.getGreekChar();
 
             //Populate grid with maps and greek characters
-            for (int i = 0; i < 9; i++) {
+            for (int i = 0; i < grid.length; i++) {
                 grid[i].setBackgroundResource(mp[i].getMapImage());
                 grid[i].setText(String.valueOf(gc[i].getCharName()));
+            }
+
+            //Populate question grid with maps only
+            ArrayList<Map> quesMapList = new ArrayList<Map>();
+            for (int i = 0; i < mp.length; i++) {
+                quesMapList.add(mp[i]);
+            }
+            Collections.shuffle(quesMapList);
+            for (int i = 0; i < quesGrid.length; i++) {
+                quesGrid[i].setBackgroundResource(quesMapList.get(i).getMapImage());
             }
         }
     }
