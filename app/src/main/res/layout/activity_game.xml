@@ -276,18 +276,18 @@
         android:contentDescription="@string/playground" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/recieverButton0"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginBottom="5sp"
         android:layout_alignBottom="@+id/imageView2"
-        android:layout_toLeftOf="@+id/button3"
-        android:layout_toStartOf="@+id/button3"
+        android:layout_toLeftOf="@+id/recieverButton1"
+        android:layout_toStartOf="@+id/recieverButton1"
         android:layout_marginRight="15sp"
         android:layout_marginEnd="15sp" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/recieverButton1"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_centerHorizontal="true"
@@ -295,13 +295,13 @@
         android:layout_marginBottom="5sp" />
 
     <Button
-        android:id="@+id/button4"
+        android:id="@+id/recieverButton2"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginBottom="5sp"
         android:layout_alignBottom="@+id/imageView2"
-        android:layout_toRightOf="@+id/button3"
-        android:layout_toEndOf="@+id/button3"
+        android:layout_toRightOf="@+id/recieverButton1"
+        android:layout_toEndOf="@+id/recieverButton1"
         android:layout_marginLeft="15sp"
         android:layout_marginStart="15sp" />
 
