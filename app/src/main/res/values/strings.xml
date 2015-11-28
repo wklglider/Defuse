@@ -17,4 +17,6 @@
     <string name="help_button_2">Help</string>
     <string name="home_button">Home</string>
     <string name="ranking_text">Ranking</string>
+    <string name="hdrPlayer">Player</string>
+    <string name="hdrScore">Score</string>
 </resources>
