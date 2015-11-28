@@ -11,45 +11,45 @@ public class Map {
 
     //Constructor with name and image
     Map(String name, int image) {
-        this.mapName = name;
-        this.mapImage = image;
+        mapName = name;
+        mapImage = image;
     }
 
     //Constructor with name, image and character number
     Map(String name, int image, int charNum) {
-        this.mapName = name;
-        this.mapImage = image;
-        this.greekChar = charNum;
+        mapName = name;
+        mapImage = image;
+        greekChar = charNum;
     }
 
     //Set Map Name
     public void setMapName(String num) {
-        this.mapName = num;
+        mapName = num;
     }
 
     //Get Map Name
     public String getMapName() {
-        return this.mapName;
+        return mapName;
     }
 
     //Set Map Image
     public void setMapImage(int num) {
-        this.mapImage = num;
+        mapImage = num;
     }
 
     //Get Map Image
     public int getMapImage() {
-        return this.mapImage;
+        return mapImage;
     }
 
     //Set Greek Character
     public void setGreekChar(int num) {
-        this.greekChar = num;
+        greekChar = num;
     }
 
     //Get Greek Character
     public int getGreekChar() {
-        return this.greekChar;
+        return greekChar;
     }
 
     //Private members: mapName, mapImage, greekChar
