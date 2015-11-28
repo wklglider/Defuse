@@ -40,7 +40,7 @@ public class DefuseGame {
 
     //Get Map resources
     public void Maps() {
-        Map map[] = new Map[15];
+        Map map[] = new Map[43];
         maps = new ArrayList<Map>();
 //        for(int i = 0; i < map.length; i++) {
 //            String fileName = "map" + i;
@@ -65,34 +65,34 @@ public class DefuseGame {
         map[12] = new Map("Map12",R.drawable.map12);
         map[13] = new Map("Map13",R.drawable.map13);
         map[14] = new Map("Map14",R.drawable.map14);
-//        map[15] = new Map("Map15",R.drawable.map15);
-//        map[16] = new Map("Map16",R.drawable.map16);
-//        map[17] = new Map("Map17",R.drawable.map17);
-//        map[18] = new Map("Map18",R.drawable.map18);
-//        map[19] = new Map("Map19",R.drawable.map19);
-//        map[20] = new Map("Map20",R.drawable.map20);
-//        map[21] = new Map("Map21",R.drawable.map21);
-//        map[22] = new Map("Map22",R.drawable.map22);
-//        map[23] = new Map("Map23",R.drawable.map23);
-//        map[24] = new Map("Map24",R.drawable.map24);
-//        map[25] = new Map("Map25",R.drawable.map25);
-//        map[26] = new Map("Map26",R.drawable.map26);
-//        map[27] = new Map("Map27",R.drawable.map27);
-//        map[28] = new Map("Map28",R.drawable.map28);
-//        map[29] = new Map("Map29",R.drawable.map29);
-//        map[30] = new Map("Map30",R.drawable.map30);
-//        map[31] = new Map("Map31",R.drawable.map31);
-//        map[32] = new Map("Map32",R.drawable.map32);
-//        map[33] = new Map("Map33",R.drawable.map33);
-//        map[34] = new Map("Map34",R.drawable.map34);
-//        map[35] = new Map("Map35",R.drawable.map35);
-//        map[36] = new Map("Map36",R.drawable.map36);
-//        map[37] = new Map("Map37",R.drawable.map37);
-//        map[38] = new Map("Map38",R.drawable.map38);
-//        map[39] = new Map("Map39",R.drawable.map39);
-//        map[40] = new Map("Map40",R.drawable.map40);
-//        map[41] = new Map("Map41",R.drawable.map41);
-//        map[42] = new Map("Map42",R.drawable.map42);
+        map[15] = new Map("Map15",R.drawable.map15);
+        map[16] = new Map("Map16",R.drawable.map16);
+        map[17] = new Map("Map17",R.drawable.map17);
+        map[18] = new Map("Map18",R.drawable.map18);
+        map[19] = new Map("Map19",R.drawable.map19);
+        map[20] = new Map("Map20",R.drawable.map20);
+        map[21] = new Map("Map21",R.drawable.map21);
+        map[22] = new Map("Map22",R.drawable.map22);
+        map[23] = new Map("Map23",R.drawable.map23);
+        map[24] = new Map("Map24",R.drawable.map24);
+        map[25] = new Map("Map25",R.drawable.map25);
+        map[26] = new Map("Map26",R.drawable.map26);
+        map[27] = new Map("Map27",R.drawable.map27);
+        map[28] = new Map("Map28",R.drawable.map28);
+        map[29] = new Map("Map29",R.drawable.map29);
+        map[30] = new Map("Map30",R.drawable.map30);
+        map[31] = new Map("Map31",R.drawable.map31);
+        map[32] = new Map("Map32",R.drawable.map32);
+        map[33] = new Map("Map33",R.drawable.map33);
+        map[34] = new Map("Map34",R.drawable.map34);
+        map[35] = new Map("Map35",R.drawable.map35);
+        map[36] = new Map("Map36",R.drawable.map36);
+        map[37] = new Map("Map37",R.drawable.map37);
+        map[38] = new Map("Map38",R.drawable.map38);
+        map[39] = new Map("Map39",R.drawable.map39);
+        map[40] = new Map("Map40",R.drawable.map40);
+        map[41] = new Map("Map41",R.drawable.map41);
+        map[42] = new Map("Map42",R.drawable.map42);
 
         for(int i = 0; i < map.length; i++) {
             maps.add(map[i]);
@@ -122,7 +122,7 @@ public class DefuseGame {
         //Get generate numbers for greek char
         for(int i= 0; i < 9; i++) {
             do {
-                randomNumber = gen.nextInt(15);
+                randomNumber = gen.nextInt(43);
                 mp[i] = maps.get(randomNumber);
             } while (used.contains(randomNumber) || mp[i] == null);
 //            mp[i].setGreekChar(randomGreekChar());
