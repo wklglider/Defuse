@@ -22,6 +22,8 @@ import android.widget.Toast;
 import android.widget.Button;
 import android.content.Context;
 import android.widget.EditText;
+import android.content.Intent;
+
 
 public class GameActivity extends AppCompatActivity {
     public String playerName;
@@ -78,8 +80,9 @@ public class GameActivity extends AppCompatActivity {
 //        response = (EditText) findViewById(R.id.result_editText);
         btnHelp = (Button)findViewById(R.id.helpButton);
         btnHome = (Button)findViewById(R.id.homeButton);
+
         //Game start
-//        startNewGame();
+        startNewGame();
     }
 
     @Override
