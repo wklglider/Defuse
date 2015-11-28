@@ -42,7 +42,8 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="56dp"
         android:clickable="true"
-        android:onClick="start_new_game" />
+        android:onClick="start_new_game"
+        android:enabled="false" />
 
     <Button
         android:layout_width="wrap_content"
