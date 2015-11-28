@@ -9,6 +9,7 @@ import android.os.CountDownTimer;
 import java.util.concurrent.TimeUnit;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+<<<<<<< HEAD
 import android.content.ClipData;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -19,13 +20,25 @@ import android.view.DragEvent;
 import android.view.View.OnDragListener;
 import android.view.View.OnLongClickListener;
 import android.widget.Toast;
+=======
+import android.widget.Button;
+import android.content.Context;
+import android.widget.EditText;
+import android.content.Intent;
+>>>>>>> master
 
 public class GameActivity extends AppCompatActivity {
     public String playerName;
     public DefuseGame defuseGame;
     boolean gameCancelled = false;
     boolean startNextRound;
-
+    Button[] grid = new Button[9];
+    Context context;
+    TextView timer;
+    TextView roundCounter;
+    EditText response;
+    Button btnHelp;
+    Button btnHome;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +46,7 @@ public class GameActivity extends AppCompatActivity {
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_game);
 
+<<<<<<< HEAD
         findViewById(R.id.mapButton0).setOnLongClickListener(longListener);
         findViewById(R.id.mapButton1).setOnLongClickListener(longListener);
         findViewById(R.id.mapButton2).setOnLongClickListener(longListener);
@@ -46,6 +60,32 @@ public class GameActivity extends AppCompatActivity {
         findViewById(R.id.recieverButton0).setOnDragListener(dragListener);
         findViewById(R.id.recieverButton1).setOnDragListener(dragListener);
         findViewById(R.id.recieverButton2).setOnDragListener(dragListener);
+=======
+//        //Get grid for each map button
+//        for(int i = 0; i < grid.length; i++) {
+//            String buttonName = "mapButton" + i;
+//            int buttonID = context.getResources().getIdentifier(buttonName, "id", context.getPackageName());
+//            grid[i] = (Button)findViewById(buttonID);
+//        }
+
+        grid[0] = (Button)findViewById(R.id.mapButton0);
+        grid[1] = (Button)findViewById(R.id.mapButton1);
+        grid[2] = (Button)findViewById(R.id.mapButton2);
+        grid[3] = (Button)findViewById(R.id.mapButton3);
+        grid[4] = (Button)findViewById(R.id.mapButton4);
+        grid[5] = (Button)findViewById(R.id.mapButton5);
+        grid[6] = (Button)findViewById(R.id.mapButton6);
+        grid[7] = (Button)findViewById(R.id.mapButton7);
+        grid[8] = (Button)findViewById(R.id.mapButton8);
+
+        //Get element ready for the game
+        timer = (TextView) findViewById( R.id.timerContent_textView );
+        roundCounter = (TextView) findViewById( R.id.roundContent_textView );
+//        response = (EditText) findViewById(R.id.result_editText);
+        btnHelp = (Button)findViewById(R.id.helpButton);
+        btnHome = (Button)findViewById(R.id.homeButton);
+
+>>>>>>> master
         //Game start
 //        startNewGame();
     }
@@ -118,13 +158,17 @@ public class GameActivity extends AppCompatActivity {
         if (startNextRound) {
             //reset boolean for next round
             startNextRound = false;
+
+            //Get maps and Greek Character
+            Map[] mp = game.getMaps();
+            GreekCharacter[] gc = game.getGreekChar();
+
+            //Populate grid with maps and greek characters
+            for (int i = 0; i < 9; i++) {
+                grid[i].setBackgroundResource(mp[i].getMapImage());
+                grid[i].setText(String.valueOf(gc[i].getCharName()));
+            }
         }
-
-        //Get maps and Greek Character
-        Map[] mp = game.getMaps();
-        GreekCharacter[] gc = game.getGreekChar();
-
-
     }
 
     //Start timer count down
