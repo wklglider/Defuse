@@ -9,7 +9,6 @@ import android.os.CountDownTimer;
 import java.util.concurrent.TimeUnit;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
-<<<<<<< HEAD
 import android.content.ClipData;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -20,12 +19,9 @@ import android.view.DragEvent;
 import android.view.View.OnDragListener;
 import android.view.View.OnLongClickListener;
 import android.widget.Toast;
-=======
 import android.widget.Button;
 import android.content.Context;
 import android.widget.EditText;
-import android.content.Intent;
->>>>>>> master
 
 public class GameActivity extends AppCompatActivity {
     public String playerName;
@@ -46,7 +42,6 @@ public class GameActivity extends AppCompatActivity {
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_game);
 
-<<<<<<< HEAD
         findViewById(R.id.mapButton0).setOnLongClickListener(longListener);
         findViewById(R.id.mapButton1).setOnLongClickListener(longListener);
         findViewById(R.id.mapButton2).setOnLongClickListener(longListener);
@@ -60,7 +55,6 @@ public class GameActivity extends AppCompatActivity {
         findViewById(R.id.recieverButton0).setOnDragListener(dragListener);
         findViewById(R.id.recieverButton1).setOnDragListener(dragListener);
         findViewById(R.id.recieverButton2).setOnDragListener(dragListener);
-=======
 //        //Get grid for each map button
 //        for(int i = 0; i < grid.length; i++) {
 //            String buttonName = "mapButton" + i;
@@ -84,8 +78,6 @@ public class GameActivity extends AppCompatActivity {
 //        response = (EditText) findViewById(R.id.result_editText);
         btnHelp = (Button)findViewById(R.id.helpButton);
         btnHome = (Button)findViewById(R.id.homeButton);
-
->>>>>>> master
         //Game start
 //        startNewGame();
     }
