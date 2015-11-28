@@ -7,8 +7,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="csci3320.defuse.GameActivity"
-    android:background="@drawable/bg_game">
+    tools:context="csci3320.defuse.GameActivity">
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -165,21 +164,30 @@
                 style="@style/Base.ThemeOverlay.AppCompat.ActionBar"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:layout_column="1" />
+                android:layout_column="1"
+                android:textColor="#ff7b02"
+                android:textStyle="bold"
+                android:textSize="@dimen/abc_dialog_padding_top_material" />
 
             <Button
                 android:id="@+id/mapButton1"
                 style="@style/Base.ThemeOverlay.AppCompat.ActionBar"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:layout_column="2" />
+                android:layout_column="2"
+                android:textColor="#ff7b02"
+                android:textStyle="bold"
+                android:textSize="@dimen/abc_dialog_padding_top_material" />
 
             <Button
                 android:id="@+id/mapButton2"
                 style="@style/Base.ThemeOverlay.AppCompat.ActionBar"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:layout_column="3" />
+                android:layout_column="3"
+                android:textColor="#ff7b02"
+                android:textStyle="bold"
+                android:textSize="@dimen/abc_dialog_padding_top_material" />
         </TableRow>
 
         <TableRow
@@ -191,21 +199,30 @@
                 style="@style/Base.ThemeOverlay.AppCompat.ActionBar"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:layout_column="1" />
+                android:layout_column="1"
+                android:textColor="#ff7b02"
+                android:textStyle="bold"
+                android:textSize="@dimen/abc_dialog_padding_top_material" />
 
             <Button
                 android:id="@+id/mapButton4"
                 style="@style/Base.ThemeOverlay.AppCompat.ActionBar"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:layout_column="2" />
+                android:layout_column="2"
+                android:textColor="#ff7b02"
+                android:textStyle="bold"
+                android:textSize="@dimen/abc_dialog_padding_top_material" />
 
             <Button
                 android:id="@+id/mapButton5"
                 style="@style/Base.ThemeOverlay.AppCompat.ActionBar"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:layout_column="3" />
+                android:layout_column="3"
+                android:textColor="#ff7b02"
+                android:textStyle="bold"
+                android:textSize="@dimen/abc_dialog_padding_top_material" />
         </TableRow>
 
         <TableRow
@@ -217,21 +234,30 @@
                 style="@style/Base.ThemeOverlay.AppCompat.ActionBar"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:layout_column="1" />
+                android:layout_column="1"
+                android:textColor="#ff7b02"
+                android:textStyle="bold"
+                android:textSize="@dimen/abc_dialog_padding_top_material" />
 
             <Button
                 android:id="@+id/mapButton7"
                 style="@style/Base.ThemeOverlay.AppCompat.ActionBar"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:layout_column="2" />
+                android:layout_column="2"
+                android:textColor="#ff7b02"
+                android:textStyle="bold"
+                android:textSize="@dimen/abc_dialog_padding_top_material" />
 
             <Button
                 android:id="@+id/mapButton8"
                 style="@style/Base.ThemeOverlay.AppCompat.ActionBar"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:layout_column="3" />
+                android:layout_column="3"
+                android:textColor="#ff7b02"
+                android:textStyle="bold"
+                android:textSize="@dimen/abc_dialog_padding_top_material" />
         </TableRow>
 
     </TableLayout>
@@ -278,32 +304,41 @@
 
     <Button
         android:id="@+id/recieverButton0"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="95dp"
+        android:layout_height="95dp"
         android:layout_marginBottom="5sp"
         android:layout_alignBottom="@+id/imageView2"
         android:layout_toLeftOf="@+id/recieverButton1"
         android:layout_toStartOf="@+id/recieverButton1"
-        android:layout_marginRight="15sp"
-        android:layout_marginEnd="15sp" />
+        android:layout_marginRight="10sp"
+        android:layout_marginEnd="15sp"
+        android:textSize="@dimen/abc_dialog_padding_top_material"
+        android:textStyle="bold"
+        android:textColor="#ff7b02" />
 
     <Button
         android:id="@+id/recieverButton1"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="95dp"
+        android:layout_height="95dp"
         android:layout_centerHorizontal="true"
         android:layout_alignBottom="@+id/imageView2"
-        android:layout_marginBottom="5sp" />
+        android:layout_marginBottom="5sp"
+        android:textSize="@dimen/abc_dialog_padding_top_material"
+        android:textStyle="bold"
+        android:textColor="#ff7b02" />
 
     <Button
         android:id="@+id/recieverButton2"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="95dp"
+        android:layout_height="95dp"
         android:layout_marginBottom="5sp"
         android:layout_alignBottom="@+id/imageView2"
         android:layout_toRightOf="@+id/recieverButton1"
         android:layout_toEndOf="@+id/recieverButton1"
-        android:layout_marginLeft="15sp"
-        android:layout_marginStart="15sp" />
+        android:layout_marginLeft="10sp"
+        android:layout_marginStart="15sp"
+        android:textSize="@dimen/abc_dialog_padding_top_material"
+        android:textStyle="bold"
+        android:textColor="#ff7b02" />
 
 </RelativeLayout>
