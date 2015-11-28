@@ -9,6 +9,9 @@ import android.os.CountDownTimer;
 import java.util.concurrent.TimeUnit;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.widget.Button;
+import android.content.Context;
+import android.widget.EditText;
 import android.content.Intent;
 
 public class GameActivity extends AppCompatActivity {
@@ -16,13 +19,43 @@ public class GameActivity extends AppCompatActivity {
     public DefuseGame defuseGame;
     boolean gameCancelled = false;
     boolean startNextRound;
-
+    Button[] grid = new Button[9];
+    Context context;
+    TextView timer;
+    TextView roundCounter;
+    EditText response;
+    Button btnHelp;
+    Button btnHome;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_game);
+
+//        //Get grid for each map button
+//        for(int i = 0; i < grid.length; i++) {
+//            String buttonName = "mapButton" + i;
+//            int buttonID = context.getResources().getIdentifier(buttonName, "id", context.getPackageName());
+//            grid[i] = (Button)findViewById(buttonID);
+//        }
+
+        grid[0] = (Button)findViewById(R.id.mapButton0);
+        grid[1] = (Button)findViewById(R.id.mapButton1);
+        grid[2] = (Button)findViewById(R.id.mapButton2);
+        grid[3] = (Button)findViewById(R.id.mapButton3);
+        grid[4] = (Button)findViewById(R.id.mapButton4);
+        grid[5] = (Button)findViewById(R.id.mapButton5);
+        grid[6] = (Button)findViewById(R.id.mapButton6);
+        grid[7] = (Button)findViewById(R.id.mapButton7);
+        grid[8] = (Button)findViewById(R.id.mapButton8);
+
+        //Get element ready for the game
+        timer = (TextView) findViewById( R.id.timerContent_textView );
+        roundCounter = (TextView) findViewById( R.id.roundContent_textView );
+//        response = (EditText) findViewById(R.id.result_editText);
+        btnHelp = (Button)findViewById(R.id.helpButton);
+        btnHome = (Button)findViewById(R.id.homeButton);
 
         //Game start
         startNewGame();
@@ -96,13 +129,41 @@ public class GameActivity extends AppCompatActivity {
         if (startNextRound) {
             //reset boolean for next round
             startNextRound = false;
+
+            //Get maps and Greek Character
+            Map[] mp = game.getMaps();
+            GreekCharacter[] gc = game.getGreekChar();
+//            Map[] mp = new Map[9];
+//            System.arraycopy( game.getMaps(), 0, mp, 0, game.getMaps().length );
+//            GreekCharacter[] gc = new GreekCharacter[9];
+//            System.arraycopy( game.getGreekChar(), 0, gc, 0, game.getGreekChar().length );
+
+            //Populate grid with shapes, display current expression to user
+//            int test0 = mp[0].getMapImage();
+//            int test1 = mp[1].getMapImage();
+//            int test2 = mp[2].getMapImage();
+//            int test3 = mp[3].getMapImage();
+//            int test4 = mp[4].getMapImage();
+//            int test5 = mp[5].getMapImage();
+//            int test6 = mp[6].getMapImage();
+//            int test7 = mp[7].getMapImage();
+//            int test8 = mp[8].getMapImage();
+
+            grid[0].setBackgroundResource(mp[0].getMapImage());
+            grid[1].setBackgroundResource(mp[1].getMapImage());
+            grid[2].setBackgroundResource(mp[2].getMapImage());
+            grid[3].setBackgroundResource(mp[3].getMapImage());
+            grid[4].setBackgroundResource(mp[4].getMapImage());
+            grid[5].setBackgroundResource(mp[5].getMapImage());
+            grid[6].setBackgroundResource(mp[6].getMapImage());
+            grid[7].setBackgroundResource(mp[7].getMapImage());
+            grid[8].setBackgroundResource(mp[8].getMapImage());
+
+            for (int i = 0; i < 9; i++) {
+                //grid[i].setBackgroundResource(mp[i].getMapImage());
+                grid[i].setText(String.valueOf(gc[i].getCharName()));
+            }
         }
-
-        //Get maps and Greek Character
-        Map[] mp = game.getMaps();
-        GreekCharacter[] gc = game.getGreekChar();
-
-
     }
 
     //Start timer count down

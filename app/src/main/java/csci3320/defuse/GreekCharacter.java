@@ -9,17 +9,17 @@ public class GreekCharacter {
 
     //Constructor with name
     GreekCharacter(String name ) {
-        this.charName = name;
+        charName = name;
     }
 
     //Set character Name
     public void setCharName(String charName) {
-        this.charName = charName;
+        charName = charName;
     }
 
     //Get character Name
     public String getCharName() {
-        return this.charName;
+        return charName;
     }
 
     //Private character name
