@@ -9,7 +9,16 @@ import android.os.CountDownTimer;
 import java.util.concurrent.TimeUnit;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
-import android.content.Intent;
+import android.content.ClipData;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Point;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
+import android.view.DragEvent;
+import android.view.View.OnDragListener;
+import android.view.View.OnLongClickListener;
+import android.widget.Toast;
 
 public class GameActivity extends AppCompatActivity {
     public String playerName;
@@ -24,8 +33,21 @@ public class GameActivity extends AppCompatActivity {
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_game);
 
+        findViewById(R.id.mapButton0).setOnLongClickListener(longListener);
+        findViewById(R.id.mapButton1).setOnLongClickListener(longListener);
+        findViewById(R.id.mapButton2).setOnLongClickListener(longListener);
+        findViewById(R.id.mapButton3).setOnLongClickListener(longListener);
+        findViewById(R.id.mapButton4).setOnLongClickListener(longListener);
+        findViewById(R.id.mapButton5).setOnLongClickListener(longListener);
+        findViewById(R.id.mapButton6).setOnLongClickListener(longListener);
+        findViewById(R.id.mapButton7).setOnLongClickListener(longListener);
+        findViewById(R.id.mapButton8).setOnLongClickListener(longListener);
+
+        findViewById(R.id.recieverButton0).setOnDragListener(dragListener);
+        findViewById(R.id.recieverButton1).setOnDragListener(dragListener);
+        findViewById(R.id.recieverButton2).setOnDragListener(dragListener);
         //Game start
-        startNewGame();
+//        startNewGame();
     }
 
     @Override
@@ -143,4 +165,83 @@ public class GameActivity extends AppCompatActivity {
     public void exit_game(View view) {
         onBackPressed();
     }
+
+    OnLongClickListener longListener = new OnLongClickListener()
+    {
+        @Override
+        public boolean onLongClick(View v)
+        {
+            TextView fruit = (TextView) v;
+            Toast.makeText(GameActivity.this, "Text long clicked - " +fruit.getText() , Toast.LENGTH_SHORT).show();
+
+            View.DragShadowBuilder myShadowBuilder = new MyShadowBuilder(v);
+
+            ClipData data = ClipData.newPlainText("", "");
+            v.startDrag(data, myShadowBuilder, fruit, 0);
+
+            return true;
+        }
+
+    };
+
+    OnDragListener dragListener = new OnDragListener()
+    {
+        @Override
+        public boolean onDrag(View v, DragEvent event)
+        {
+            int dragEvent = event.getAction();
+            TextView dropText = (TextView) v;
+
+            switch(dragEvent)
+            {
+                case DragEvent.ACTION_DRAG_ENTERED:
+                    //dropText.setTextColor(Color.GREEN);
+                    break;
+
+                case DragEvent.ACTION_DRAG_EXITED:
+                    //dropText.setTextColor(Color.RED);
+                    break;
+
+                case DragEvent.ACTION_DROP:
+                    TextView draggedText = (TextView)event.getLocalState();
+                    dropText.setText(draggedText.getText());
+                    break;
+            }
+
+            return true;
+        }
+
+    };
+
+    private class MyShadowBuilder extends View.DragShadowBuilder
+    {
+        private Drawable shadow;
+
+        public MyShadowBuilder(View v)
+        {
+            super(v);
+            shadow = new ColorDrawable(Color.LTGRAY);
+        }
+
+        @Override
+        public void onDrawShadow(Canvas canvas)
+        {
+            shadow.draw(canvas);
+        }
+
+        @Override
+        public void onProvideShadowMetrics(Point shadowSize, Point shadowTouchPoint)
+        {
+            int height, width;
+            height = (int) getView().getHeight()/2;
+            width = (int) getView().getHeight()/2;
+
+            shadow.setBounds(0, 0, width, height);
+
+            shadowSize.set(width, height);
+            shadowTouchPoint.set(width/2, height/2);
+        }
+
+    }
+
 }
