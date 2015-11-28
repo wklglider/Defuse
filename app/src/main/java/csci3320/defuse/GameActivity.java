@@ -6,12 +6,18 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.TextView;
 import android.os.CountDownTimer;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.concurrent.TimeUnit;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.ClipData;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Point;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
 import android.view.DragEvent;
 import android.view.View.OnDragListener;
 import android.view.View.OnLongClickListener;
@@ -19,6 +25,7 @@ import android.widget.Toast;
 import android.widget.Button;
 import android.content.Context;
 import android.widget.EditText;
+import android.content.Intent;
 
 
 public class GameActivity extends AppCompatActivity {
@@ -180,7 +187,7 @@ public class GameActivity extends AppCompatActivity {
         new CountDownTimer(90000, 50) { // adjust the milli seconds here
 
             public void onTick(long millisUntilFinished) {
-                timer.setText(String.format("%2d : %02d : %02d",
+                timer.setText("" + String.format("%2d : %02d : %02d",
                         TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished),
                         TimeUnit.MILLISECONDS.toSeconds(millisUntilFinished)
                                 - TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished)),
@@ -220,13 +227,13 @@ public class GameActivity extends AppCompatActivity {
         @Override
         public boolean onLongClick(View v)
         {
-            TextView greekChars = (TextView) v;
-            Toast.makeText(GameActivity.this, "Text long clicked - " + greekChars.getText() , Toast.LENGTH_SHORT).show();
+            TextView fruit = (TextView) v;
+            Toast.makeText(GameActivity.this, "Text long clicked - " +fruit.getText() , Toast.LENGTH_SHORT).show();
 
-            View.DragShadowBuilder myShadowBuilder = new View.DragShadowBuilder(v);
+            View.DragShadowBuilder myShadowBuilder = new MyShadowBuilder(v);
 
             ClipData data = ClipData.newPlainText("", "");
-            v.startDrag(data, myShadowBuilder, greekChars, 0);
+            v.startDrag(data, myShadowBuilder, fruit, 0);
 
             return true;
         }
@@ -261,5 +268,36 @@ public class GameActivity extends AppCompatActivity {
         }
 
     };
-    
+
+    private class MyShadowBuilder extends View.DragShadowBuilder
+    {
+        private Drawable shadow;
+
+        public MyShadowBuilder(View v)
+        {
+            super(v);
+            shadow = new ColorDrawable(Color.LTGRAY);
+        }
+
+        @Override
+        public void onDrawShadow(Canvas canvas)
+        {
+            shadow.draw(canvas);
+        }
+
+        @Override
+        public void onProvideShadowMetrics(Point shadowSize, Point shadowTouchPoint)
+        {
+            int height, width;
+            height = (int) getView().getHeight()/2;
+            width = (int) getView().getHeight()/2;
+
+            shadow.setBounds(0, 0, width, height);
+
+            shadowSize.set(width, height);
+            shadowTouchPoint.set(width/2, height/2);
+        }
+
+    }
+
 }
