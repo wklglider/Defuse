@@ -26,10 +26,12 @@ public class GameActivity extends AppCompatActivity {
     public DefuseGame defuseGame;
     boolean gameCancelled = false;
     boolean startNextRound;
+    ArrayList<Map> quesMapList = new ArrayList<Map>();
     Button[] grid = new Button[9];
     Button[] quesGrid = new Button[3];
     Context context;
     TextView timer;
+
     TextView roundCounter;
     EditText response;
     Button btnHelp;
@@ -162,7 +164,6 @@ public class GameActivity extends AppCompatActivity {
             }
 
             //Populate question grid with maps only
-            ArrayList<Map> quesMapList = new ArrayList<Map>();
             for (int i = 0; i < mp.length; i++) {
                 quesMapList.add(mp[i]);
             }
@@ -185,7 +186,6 @@ public class GameActivity extends AppCompatActivity {
                                 - TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished)),
                         TimeUnit.MILLISECONDS.toMillis(millisUntilFinished)
                                 - TimeUnit.SECONDS.toMillis(TimeUnit.MILLISECONDS.toSeconds(millisUntilFinished))));
-//                                - TimeUnit.MINUTES.toMillis(TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished))));
                 if(gameCancelled)
                     this.cancel();
             }
