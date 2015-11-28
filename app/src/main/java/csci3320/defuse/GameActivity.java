@@ -6,18 +6,12 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.TextView;
 import android.os.CountDownTimer;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.concurrent.TimeUnit;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.ClipData;
-import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.Point;
-import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
 import android.view.DragEvent;
 import android.view.View.OnDragListener;
 import android.view.View.OnLongClickListener;
@@ -25,7 +19,6 @@ import android.widget.Toast;
 import android.widget.Button;
 import android.content.Context;
 import android.widget.EditText;
-import android.content.Intent;
 
 
 public class GameActivity extends AppCompatActivity {
@@ -186,7 +179,7 @@ public class GameActivity extends AppCompatActivity {
         new CountDownTimer(90000, 50) { // adjust the milli seconds here
 
             public void onTick(long millisUntilFinished) {
-                timer.setText("" + String.format("%2d : %02d : %02d",
+                timer.setText(String.format("%2d : %02d : %02d",
                         TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished),
                         TimeUnit.MILLISECONDS.toSeconds(millisUntilFinished)
                                 - TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished)),
