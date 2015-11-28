@@ -186,10 +186,13 @@ public class GameActivity extends AppCompatActivity {
         new CountDownTimer(90000, 50) { // adjust the milli seconds here
 
             public void onTick(long millisUntilFinished) {
-                timer.setText("" + String.format("%02d : %02d",
-                        TimeUnit.MILLISECONDS.toSeconds( millisUntilFinished),
-                        TimeUnit.MILLISECONDS.toMillis(millisUntilFinished) -
-                                TimeUnit.SECONDS.toMillis(TimeUnit.MILLISECONDS.toSeconds(millisUntilFinished))));
+                timer.setText("" + String.format("%2d : %02d : %02d",
+                        TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished),
+                        TimeUnit.MILLISECONDS.toSeconds(millisUntilFinished)
+                                - TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished)),
+                        TimeUnit.MILLISECONDS.toMillis(millisUntilFinished)
+                                - TimeUnit.SECONDS.toMillis(TimeUnit.MILLISECONDS.toSeconds(millisUntilFinished))));
+//                                - TimeUnit.MINUTES.toMillis(TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished))));
                 if(gameCancelled)
                     this.cancel();
             }
