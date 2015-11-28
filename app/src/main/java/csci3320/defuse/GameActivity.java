@@ -133,34 +133,10 @@ public class GameActivity extends AppCompatActivity {
             //Get maps and Greek Character
             Map[] mp = game.getMaps();
             GreekCharacter[] gc = game.getGreekChar();
-//            Map[] mp = new Map[9];
-//            System.arraycopy( game.getMaps(), 0, mp, 0, game.getMaps().length );
-//            GreekCharacter[] gc = new GreekCharacter[9];
-//            System.arraycopy( game.getGreekChar(), 0, gc, 0, game.getGreekChar().length );
 
-            //Populate grid with shapes, display current expression to user
-//            int test0 = mp[0].getMapImage();
-//            int test1 = mp[1].getMapImage();
-//            int test2 = mp[2].getMapImage();
-//            int test3 = mp[3].getMapImage();
-//            int test4 = mp[4].getMapImage();
-//            int test5 = mp[5].getMapImage();
-//            int test6 = mp[6].getMapImage();
-//            int test7 = mp[7].getMapImage();
-//            int test8 = mp[8].getMapImage();
-
-            grid[0].setBackgroundResource(mp[0].getMapImage());
-            grid[1].setBackgroundResource(mp[1].getMapImage());
-            grid[2].setBackgroundResource(mp[2].getMapImage());
-            grid[3].setBackgroundResource(mp[3].getMapImage());
-            grid[4].setBackgroundResource(mp[4].getMapImage());
-            grid[5].setBackgroundResource(mp[5].getMapImage());
-            grid[6].setBackgroundResource(mp[6].getMapImage());
-            grid[7].setBackgroundResource(mp[7].getMapImage());
-            grid[8].setBackgroundResource(mp[8].getMapImage());
-
+            //Populate grid with maps and greek characters
             for (int i = 0; i < 9; i++) {
-                //grid[i].setBackgroundResource(mp[i].getMapImage());
+                grid[i].setBackgroundResource(mp[i].getMapImage());
                 grid[i].setText(String.valueOf(gc[i].getCharName()));
             }
         }
