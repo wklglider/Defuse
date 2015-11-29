@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/finishBackground"
-    tools:context="csci3320.defuse.GameOverActivity">
+    tools:context="csci3320.defuse.FinishActivity">
 
     <ImageView
         android:layout_width="wrap_content"
