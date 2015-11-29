@@ -13,11 +13,6 @@ import java.util.concurrent.TimeUnit;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.ClipData;
-import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.Point;
-import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
 import android.view.DragEvent;
 import android.view.View.OnDragListener;
 import android.view.View.OnLongClickListener;
@@ -25,7 +20,6 @@ import android.widget.Toast;
 import android.widget.Button;
 import android.content.Context;
 import android.widget.EditText;
-import android.content.Intent;
 
 
 public class GameActivity extends AppCompatActivity {
