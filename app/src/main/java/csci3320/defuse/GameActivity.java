@@ -30,10 +30,10 @@ public class GameActivity extends AppCompatActivity {
     ArrayList<Map> quesMapList = new ArrayList<Map>();
     Button[] grid = new Button[9];
     Button[] quesGrid = new Button[3];
-    Context context;
+//    Context context;
     TextView timer;
-
     TextView roundCounter;
+    int rCounter = 1;
     EditText response;
     Button btnHelp;
     Button btnHome;
@@ -103,6 +103,7 @@ public class GameActivity extends AppCompatActivity {
         //start the countdown timer and start the round
         gameCancelled = false;
         TimerCountDown();
+        roundCounter.setText(Integer.toString(rCounter) + " / 10");
         startNextRound = true;
         NextRound(defuseGame);
     }
