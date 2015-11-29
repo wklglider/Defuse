@@ -4,9 +4,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.os.CountDownTimer;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.concurrent.TimeUnit;
@@ -30,6 +30,9 @@ public class GameActivity extends AppCompatActivity {
     TextView timer;
     TextView roundCounter;
     int rCounter = 1;
+    ImageView[] lead = new ImageView[10];
+    ImageView bomb;
+//    EditText response;
     Button btnHelp;
     Button btnHome;
 
@@ -72,6 +75,20 @@ public class GameActivity extends AppCompatActivity {
         //Get element ready for the game
         timer = (TextView) findViewById( R.id.timerContent_textView );
         roundCounter = (TextView) findViewById( R.id.roundContent_textView );
+
+        //Get lead element image view for the lead burning
+        lead[0] = (ImageView) findViewById(R.id.ropeImageView0);
+        lead[1] = (ImageView) findViewById(R.id.ropeImageView1);
+        lead[2] = (ImageView) findViewById(R.id.ropeImageView2);
+        lead[3] = (ImageView) findViewById(R.id.ropeImageView3);
+        lead[4] = (ImageView) findViewById(R.id.ropeImageView4);
+        lead[5] = (ImageView) findViewById(R.id.ropeImageView5);
+        lead[6] = (ImageView) findViewById(R.id.ropeImageView6);
+        lead[7] = (ImageView) findViewById(R.id.ropeImageView7);
+        lead[8] = (ImageView) findViewById(R.id.ropeImageView8);
+        lead[9] = (ImageView) findViewById(R.id.ropeImageView9);
+        bomb = (ImageView) findViewById(R.id.bombaImageView);
+
 //        response = (EditText) findViewById(R.id.result_editText);
         btnHelp = (Button)findViewById(R.id.helpButton);
         btnHome = (Button)findViewById(R.id.homeButton);
@@ -92,9 +109,6 @@ public class GameActivity extends AppCompatActivity {
         //create new game
         defuseGame = new DefuseGame();
 
-        //clean up variables
-//        txtScore.setText("");
-
         //start the countdown timer and start the round
         gameCancelled = false;
         TimerCountDown();
@@ -110,7 +124,7 @@ public class GameActivity extends AppCompatActivity {
 
         if(index >= 0){
             msgTitle = "NEW HIGH SCORE!!!";
-            setScore();//*************************************
+            setScore();
         }
 
         //CREATE END GAME ALERT
@@ -172,15 +186,29 @@ public class GameActivity extends AppCompatActivity {
     //Start timer count down
     public void TimerCountDown (){
         final TextView timer = (TextView) findViewById( R.id.timerContent_textView );
-        new CountDownTimer(90000, 50) { // adjust the milli seconds here
+        final long totalTime = 90000;
+        new CountDownTimer(totalTime, 50) { // adjust the milli seconds here
 
             public void onTick(long millisUntilFinished) {
+                timer.setText("" + String.format("%02d : %02d : %02d",
+                                TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished),
+                                TimeUnit.MILLISECONDS.toSeconds(millisUntilFinished)
+                                        - TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished)),
+                                TimeUnit.MILLISECONDS.toMillis(millisUntilFinished)
+                                        - TimeUnit.SECONDS.toMillis(TimeUnit.MILLISECONDS.toSeconds(millisUntilFinished)))
+                );
+                //Update burning lead images
+                leadBurningEffect(millisUntilFinished, totalTime);
+
                 timer.setText(String.format("%2d : %02d : %02d",
                         TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished),
                         TimeUnit.MILLISECONDS.toSeconds(millisUntilFinished)
                                 - TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished)),
                         TimeUnit.MILLISECONDS.toMillis(millisUntilFinished)
                                 - TimeUnit.SECONDS.toMillis(TimeUnit.MILLISECONDS.toSeconds(millisUntilFinished))));
+
+                leadBurningEffect(millisUntilFinished,totalTime);
+
                 if(gameCancelled)
                     this.cancel();
             }
@@ -190,6 +218,62 @@ public class GameActivity extends AppCompatActivity {
                 timer.setText(R.string.time_up);
             }
         }.start();
+    }
+
+    //Update burning lead images
+    public void leadBurningEffect(long timeRemaining, long totalTime) {
+        int percentage = (int)((double)timeRemaining / totalTime * 100.0);
+        switch(percentage) {
+            case 95:
+                lead[0].setBackgroundResource(R.drawable.fire_rope);
+                break;
+            case 85:
+                lead[0].setBackgroundResource(0);
+                lead[1].setBackgroundResource(R.drawable.fire_rope);
+                break;
+            case 75:
+                lead[1].setBackgroundResource(0);
+                lead[2].setBackgroundResource(R.drawable.fire_rope);
+                break;
+            case 65:
+                lead[2].setBackgroundResource(0);
+                lead[3].setBackgroundResource(R.drawable.fire_rope);
+                break;
+            case 55:
+                lead[3].setBackgroundResource(0);
+                lead[4].setBackgroundResource(R.drawable.fire_rope);
+                break;
+            case 45:
+                lead[4].setBackgroundResource(0);
+                lead[5].setBackgroundResource(R.drawable.fire_rope);
+                break;
+            case 35:
+                lead[5].setBackgroundResource(0);
+                lead[6].setBackgroundResource(R.drawable.fire_rope);
+                break;
+            case 25:
+                lead[6].setBackgroundResource(0);
+                lead[7].setBackgroundResource(R.drawable.fire_rope);
+                break;
+            case 15:
+                lead[7].setBackgroundResource(0);
+                lead[8].setBackgroundResource(R.drawable.fire_rope);
+                break;
+            case 5:
+                lead[8].setBackgroundResource(0);
+                lead[9].setBackgroundResource(R.drawable.fire_rope);
+                break;
+            case 0:
+                lead[9].setBackgroundResource(0);
+                bomb.setBackgroundResource(R.drawable.small_boom);
+                break;
+        }
+    }
+
+    //Calculate score
+    public void calculateScore(String player, long remainingTime, int roundNumber){
+//        DatabaseOperations dbOp = new DatabaseOperations(this);
+//        dbOp.putInformation(player,levelPlayed,score);
     }
 
     public void setScore() {

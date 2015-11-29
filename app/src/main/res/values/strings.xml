@@ -12,7 +12,7 @@
     <string name="timer_hint">01:00:00</string>
     <string name="time_up">Time Up!</string>
     <string name="remaining_text">Rounds</string>
-    <string name="remaining_hint">09/10</string>
+    <string name="remaining_hint">01/10</string>
     <string name="fuse">Fuse</string>
     <string name="playground">Playground</string>
     <string name="help_button_2">Help</string>
