@@ -144,7 +144,7 @@
             android:layout_width="25dp"
             android:layout_height="match_parent"
             android:layout_column="10"
-            android:background="@drawable/rope"
+            android:background="@drawable/fire_rope"
             android:contentDescription="@string/fuse" />
 
     </TableRow>
@@ -166,9 +166,9 @@
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:layout_column="1"
-                android:textColor="#ff7b02"
                 android:textStyle="bold"
-                android:textSize="@dimen/abc_dialog_padding_top_material" />
+                android:textSize="@dimen/abc_dialog_padding_top_material"
+                android:textColor="#ff7b02" />
 
             <Button
                 android:id="@+id/mapButton1"

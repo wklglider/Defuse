@@ -1,5 +1,6 @@
 package csci3320.defuse;
 
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -27,6 +28,8 @@ public class GameActivity extends AppCompatActivity {
     ArrayList<Map> quesMapList = new ArrayList<>();
     Button[] grid = new Button[9];
     Button[] quesGrid = new Button[3];
+    String[] answer = new String[3];
+    boolean[] ansResult = new boolean[3];
     TextView timer;
     TextView roundCounter;
     int rCounter = 1;
@@ -112,7 +115,15 @@ public class GameActivity extends AppCompatActivity {
         //start the countdown timer and start the round
         gameCancelled = false;
         TimerCountDown();
-        roundCounter.setText(String.format("%d / 10", rCounter));
+        rCounter = 1;
+
+        //Reset burning lead
+        bomb.setBackgroundResource(R.drawable.bomb);
+        lead[0].setBackgroundResource(R.drawable.fire_rope);
+        for (int i = 1; i < lead.length; i++) {
+            lead[i].setBackgroundResource(R.drawable.rope);
+        }
+
         startNextRound = true;
         NextRound(defuseGame);
     }
@@ -121,6 +132,8 @@ public class GameActivity extends AppCompatActivity {
         String msgTitle = "GAME OVER";
         int finalScore = defuseGame.getScore();
         int index = isInTopRank(finalScore);
+
+        //***************************************************************************  GameOverActivity Fail only
 
         if(index >= 0){
             msgTitle = "NEW HIGH SCORE!!!";
@@ -164,6 +177,9 @@ public class GameActivity extends AppCompatActivity {
             //reset boolean for next round
             startNextRound = false;
 
+            //Refresh round count
+            roundCounter.setText(String.format("%d / 10", rCounter));
+
             //Get maps and Greek Character
             Map[] mp = game.getMaps();
             GreekCharacter[] gc = game.getGreekChar();
@@ -172,13 +188,18 @@ public class GameActivity extends AppCompatActivity {
             for (int i = 0; i < grid.length; i++) {
                 grid[i].setBackgroundResource(mp[i].getMapImage());
                 grid[i].setText(String.valueOf(gc[i].getCharName()));
+                mp[i].setGreekChar(gc[i].getCharName());
             }
 
             //Populate question grid with maps only
+            quesMapList.clear();
             Collections.addAll(quesMapList, mp);
             Collections.shuffle(quesMapList);
             for (int i = 0; i < quesGrid.length; i++) {
+                quesGrid[i].setText("");
                 quesGrid[i].setBackgroundResource(quesMapList.get(i).getMapImage());
+                answer[i] = quesMapList.get(i).getGreekChar();
+                ansResult[i] = false;
             }
         }
     }
@@ -224,46 +245,74 @@ public class GameActivity extends AppCompatActivity {
     public void leadBurningEffect(long timeRemaining, long totalTime) {
         int percentage = (int)((double)timeRemaining / totalTime * 100.0);
         switch(percentage) {
+            case 99:
             case 95:
                 lead[0].setBackgroundResource(R.drawable.fire_rope);
                 break;
+            case 89:
             case 85:
                 lead[0].setBackgroundResource(0);
                 lead[1].setBackgroundResource(R.drawable.fire_rope);
                 break;
+            case 79:
             case 75:
+                lead[0].setBackgroundResource(0);
                 lead[1].setBackgroundResource(0);
                 lead[2].setBackgroundResource(R.drawable.fire_rope);
                 break;
+            case 69:
             case 65:
+                lead[0].setBackgroundResource(0);
+                lead[1].setBackgroundResource(0);
                 lead[2].setBackgroundResource(0);
                 lead[3].setBackgroundResource(R.drawable.fire_rope);
                 break;
+            case 59:
             case 55:
+                lead[1].setBackgroundResource(0);
+                lead[2].setBackgroundResource(0);
                 lead[3].setBackgroundResource(0);
                 lead[4].setBackgroundResource(R.drawable.fire_rope);
                 break;
+            case 49:
             case 45:
+                lead[2].setBackgroundResource(0);
+                lead[3].setBackgroundResource(0);
                 lead[4].setBackgroundResource(0);
                 lead[5].setBackgroundResource(R.drawable.fire_rope);
                 break;
+            case 39:
             case 35:
+                lead[3].setBackgroundResource(0);
+                lead[4].setBackgroundResource(0);
                 lead[5].setBackgroundResource(0);
                 lead[6].setBackgroundResource(R.drawable.fire_rope);
                 break;
+            case 29:
             case 25:
+                lead[4].setBackgroundResource(0);
+                lead[5].setBackgroundResource(0);
                 lead[6].setBackgroundResource(0);
                 lead[7].setBackgroundResource(R.drawable.fire_rope);
                 break;
+            case 19:
             case 15:
+                lead[5].setBackgroundResource(0);
+                lead[6].setBackgroundResource(0);
                 lead[7].setBackgroundResource(0);
                 lead[8].setBackgroundResource(R.drawable.fire_rope);
                 break;
+            case 9:
             case 5:
+                lead[6].setBackgroundResource(0);
+                lead[7].setBackgroundResource(0);
                 lead[8].setBackgroundResource(0);
                 lead[9].setBackgroundResource(R.drawable.fire_rope);
                 break;
+            case 1:
             case 0:
+                lead[7].setBackgroundResource(0);
+                lead[8].setBackgroundResource(0);
                 lead[9].setBackgroundResource(0);
                 bomb.setBackgroundResource(R.drawable.small_boom);
                 break;
@@ -286,6 +335,31 @@ public class GameActivity extends AppCompatActivity {
     }
     public void exit_game(View view) {
         onBackPressed();
+    }
+
+    public void checkAnswers() {
+        for (int i = 0; i < 3; i++) {
+            if (ansResult[i] == false && quesGrid[i].getText() != "") {
+                if(quesGrid[i].getText() == answer[i]) {
+                    quesGrid[i].setText("✓");
+                    quesGrid[i].setTextColor(Color.GREEN);
+                    ansResult[i] = true;
+                } else {
+                    quesGrid[i].setText("X");
+                    quesGrid[i].setTextColor(Color.RED);
+                }
+            }
+        }
+
+        if(ansResult[0] && ansResult[1] && ansResult[2]) {
+            rCounter++;
+            if(rCounter == 10) {
+                //***************************************************************************  GameOverActivity Succeed only
+            } else {
+                startNextRound = true;
+                NextRound(defuseGame);
+            }
+        }
     }
 
     OnLongClickListener longListener = new OnLongClickListener()
@@ -327,6 +401,9 @@ public class GameActivity extends AppCompatActivity {
                 case DragEvent.ACTION_DROP:
                     TextView draggedText = (TextView)event.getLocalState();
                     dropText.setText(draggedText.getText());
+
+                    //Check the three answer are all correct or not
+                    checkAnswers();
                     break;
             }
 
