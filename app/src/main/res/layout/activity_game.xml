@@ -7,7 +7,8 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="csci3320.defuse.GameActivity">
+    tools:context="csci3320.defuse.GameActivity"
+    android:background="@drawable/bg_game">
 
     <LinearLayout
         android:id="@+id/linearLayout"

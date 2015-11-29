@@ -15,37 +15,30 @@ import java.util.concurrent.TimeUnit;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.ClipData;
-import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.Point;
-import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
 import android.view.DragEvent;
 import android.view.View.OnDragListener;
 import android.view.View.OnLongClickListener;
 import android.widget.Toast;
 import android.widget.Button;
-import android.content.Context;
-import android.widget.EditText;
-import android.content.Intent;
 
 
 public class GameActivity extends AppCompatActivity {
-    public String playerName;
     public DefuseGame defuseGame;
     boolean gameCancelled = false;
     boolean startNextRound;
-    ArrayList<Map> quesMapList = new ArrayList<Map>();
+    ArrayList<Map> quesMapList = new ArrayList<>();
     Button[] grid = new Button[9];
     Button[] quesGrid = new Button[3];
-//    Context context;
     TextView timer;
     TextView roundCounter;
     int rCounter = 1;
+<<<<<<< HEAD
     ImageView[] lead = new ImageView[10];
     ImageView bomb;
 
     EditText response;
+=======
+>>>>>>> refs/remotes/origin/master
     Button btnHelp;
     Button btnHome;
 
@@ -128,7 +121,7 @@ public class GameActivity extends AppCompatActivity {
         //start the countdown timer and start the round
         gameCancelled = false;
         TimerCountDown();
-        roundCounter.setText(Integer.toString(rCounter) + " / 10");
+        roundCounter.setText(String.format("%d / 10", rCounter));
         startNextRound = true;
         NextRound(defuseGame);
     }
@@ -191,9 +184,7 @@ public class GameActivity extends AppCompatActivity {
             }
 
             //Populate question grid with maps only
-            for (int i = 0; i < mp.length; i++) {
-                quesMapList.add(mp[i]);
-            }
+            Collections.addAll(quesMapList, mp);
             Collections.shuffle(quesMapList);
             for (int i = 0; i < quesGrid.length; i++) {
                 quesGrid[i].setBackgroundResource(quesMapList.get(i).getMapImage());
@@ -208,6 +199,7 @@ public class GameActivity extends AppCompatActivity {
         new CountDownTimer(totalTime, 50) { // adjust the milli seconds here
 
             public void onTick(long millisUntilFinished) {
+<<<<<<< HEAD
                 timer.setText("" + String.format("%02d : %02d : %02d",
                                 TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished),
                                 TimeUnit.MILLISECONDS.toSeconds(millisUntilFinished)
@@ -218,17 +210,26 @@ public class GameActivity extends AppCompatActivity {
                 //Update burning lead images
                 leadBurningEffect(millisUntilFinished, totalTime);
 
+=======
+                timer.setText(String.format("%2d : %02d : %02d",
+                        TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished),
+                        TimeUnit.MILLISECONDS.toSeconds(millisUntilFinished)
+                                - TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished)),
+                        TimeUnit.MILLISECONDS.toMillis(millisUntilFinished)
+                                - TimeUnit.SECONDS.toMillis(TimeUnit.MILLISECONDS.toSeconds(millisUntilFinished))));
+>>>>>>> refs/remotes/origin/master
                 if(gameCancelled)
                     this.cancel();
             }
 
             public void onFinish() {
                 gameOver();
-                timer.setText("Time up!");
+                timer.setText(R.string.time_up);
             }
         }.start();
     }
 
+<<<<<<< HEAD
     //Update burning lead images
     public void leadBurningEffect(long timeRemaining, long totalTime) {
 //        double test1 = (double)timeRemaining / totalTime;
@@ -288,6 +289,8 @@ public class GameActivity extends AppCompatActivity {
 //        dbOp.putInformation(player,levelPlayed,score);
     }
 
+=======
+>>>>>>> refs/remotes/origin/master
     public void setScore() {
 
     }
@@ -308,7 +311,7 @@ public class GameActivity extends AppCompatActivity {
             TextView fruit = (TextView) v;
             Toast.makeText(GameActivity.this, "Text long clicked - " +fruit.getText() , Toast.LENGTH_SHORT).show();
 
-            View.DragShadowBuilder myShadowBuilder = new MyShadowBuilder(v);
+            View.DragShadowBuilder myShadowBuilder = new View.DragShadowBuilder(v);
 
             ClipData data = ClipData.newPlainText("", "");
             v.startDrag(data, myShadowBuilder, fruit, 0);
@@ -346,36 +349,5 @@ public class GameActivity extends AppCompatActivity {
         }
 
     };
-
-    private class MyShadowBuilder extends View.DragShadowBuilder
-    {
-        private Drawable shadow;
-
-        public MyShadowBuilder(View v)
-        {
-            super(v);
-            shadow = new ColorDrawable(Color.LTGRAY);
-        }
-
-        @Override
-        public void onDrawShadow(Canvas canvas)
-        {
-            shadow.draw(canvas);
-        }
-
-        @Override
-        public void onProvideShadowMetrics(Point shadowSize, Point shadowTouchPoint)
-        {
-            int height, width;
-            height = (int) getView().getHeight()/2;
-            width = (int) getView().getHeight()/2;
-
-            shadow.setBounds(0, 0, width, height);
-
-            shadowSize.set(width, height);
-            shadowTouchPoint.set(width/2, height/2);
-        }
-
-    }
 
 }
