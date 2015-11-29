@@ -6,11 +6,11 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageView;
 
-public class GameOverActivity extends AppCompatActivity {
+public class FinishActivity extends AppCompatActivity {
 
     int status;
 
-    public GameOverActivity (int status) {
+    public FinishActivity(int status) {
         this.status = status;
     }
     @Override
