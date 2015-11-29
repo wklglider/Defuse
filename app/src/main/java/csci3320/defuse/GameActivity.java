@@ -230,7 +230,7 @@ public class GameActivity extends AppCompatActivity {
             TextView fruit = (TextView) v;
             Toast.makeText(GameActivity.this, "Text long clicked - " +fruit.getText() , Toast.LENGTH_SHORT).show();
 
-            View.DragShadowBuilder myShadowBuilder = new MyShadowBuilder(v);
+            View.DragShadowBuilder myShadowBuilder = new View.DragShadowBuilder(v);
 
             ClipData data = ClipData.newPlainText("", "");
             v.startDrag(data, myShadowBuilder, fruit, 0);
@@ -268,36 +268,5 @@ public class GameActivity extends AppCompatActivity {
         }
 
     };
-
-    private class MyShadowBuilder extends View.DragShadowBuilder
-    {
-        private Drawable shadow;
-
-        public MyShadowBuilder(View v)
-        {
-            super(v);
-            shadow = new ColorDrawable(Color.LTGRAY);
-        }
-
-        @Override
-        public void onDrawShadow(Canvas canvas)
-        {
-            shadow.draw(canvas);
-        }
-
-        @Override
-        public void onProvideShadowMetrics(Point shadowSize, Point shadowTouchPoint)
-        {
-            int height, width;
-            height = (int) getView().getHeight()/2;
-            width = (int) getView().getHeight()/2;
-
-            shadow.setBounds(0, 0, width, height);
-
-            shadowSize.set(width, height);
-            shadowTouchPoint.set(width/2, height/2);
-        }
-
-    }
 
 }
