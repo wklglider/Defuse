@@ -18,23 +18,18 @@ import android.view.View.OnDragListener;
 import android.view.View.OnLongClickListener;
 import android.widget.Toast;
 import android.widget.Button;
-import android.content.Context;
-import android.widget.EditText;
 
 
 public class GameActivity extends AppCompatActivity {
-    public String playerName;
     public DefuseGame defuseGame;
     boolean gameCancelled = false;
     boolean startNextRound;
-    ArrayList<Map> quesMapList = new ArrayList<Map>();
+    ArrayList<Map> quesMapList = new ArrayList<>();
     Button[] grid = new Button[9];
     Button[] quesGrid = new Button[3];
-//    Context context;
     TextView timer;
     TextView roundCounter;
     int rCounter = 1;
-    EditText response;
     Button btnHelp;
     Button btnHome;
 
@@ -103,7 +98,7 @@ public class GameActivity extends AppCompatActivity {
         //start the countdown timer and start the round
         gameCancelled = false;
         TimerCountDown();
-        roundCounter.setText(Integer.toString(rCounter) + " / 10");
+        roundCounter.setText(String.format("%d / 10", rCounter));
         startNextRound = true;
         NextRound(defuseGame);
     }
@@ -166,9 +161,7 @@ public class GameActivity extends AppCompatActivity {
             }
 
             //Populate question grid with maps only
-            for (int i = 0; i < mp.length; i++) {
-                quesMapList.add(mp[i]);
-            }
+            Collections.addAll(quesMapList, mp);
             Collections.shuffle(quesMapList);
             for (int i = 0; i < quesGrid.length; i++) {
                 quesGrid[i].setBackgroundResource(quesMapList.get(i).getMapImage());
@@ -182,7 +175,7 @@ public class GameActivity extends AppCompatActivity {
         new CountDownTimer(90000, 50) { // adjust the milli seconds here
 
             public void onTick(long millisUntilFinished) {
-                timer.setText("" + String.format("%2d : %02d : %02d",
+                timer.setText(String.format("%2d : %02d : %02d",
                         TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished),
                         TimeUnit.MILLISECONDS.toSeconds(millisUntilFinished)
                                 - TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished)),
@@ -194,15 +187,9 @@ public class GameActivity extends AppCompatActivity {
 
             public void onFinish() {
                 gameOver();
-                timer.setText("Time up!");
+                timer.setText(R.string.time_up);
             }
         }.start();
-    }
-
-    //Calculate score
-    public void calculateScore(String player, long remainingTime, int roundNumber){
-//        DatabaseOperations dbOp = new DatabaseOperations(this);
-//        dbOp.putInformation(player,levelPlayed,score);
     }
 
     public void setScore() {
