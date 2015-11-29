@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.TextView;
 import android.os.CountDownTimer;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.concurrent.TimeUnit;
@@ -181,7 +182,7 @@ public class GameActivity extends AppCompatActivity {
         new CountDownTimer(90000, 50) { // adjust the milli seconds here
 
             public void onTick(long millisUntilFinished) {
-                timer.setText(String.format("%2d : %02d : %02d",
+                timer.setText("" + String.format("%2d : %02d : %02d",
                         TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished),
                         TimeUnit.MILLISECONDS.toSeconds(millisUntilFinished)
                                 - TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished)),
@@ -221,13 +222,13 @@ public class GameActivity extends AppCompatActivity {
         @Override
         public boolean onLongClick(View v)
         {
-            TextView greekChars = (TextView) v;
-            Toast.makeText(GameActivity.this, "Text long clicked - " + greekChars.getText() , Toast.LENGTH_SHORT).show();
+            TextView fruit = (TextView) v;
+            Toast.makeText(GameActivity.this, "Text long clicked - " +fruit.getText() , Toast.LENGTH_SHORT).show();
 
             View.DragShadowBuilder myShadowBuilder = new View.DragShadowBuilder(v);
 
             ClipData data = ClipData.newPlainText("", "");
-            v.startDrag(data, myShadowBuilder, greekChars, 0);
+            v.startDrag(data, myShadowBuilder, fruit, 0);
 
             return true;
         }
@@ -262,5 +263,5 @@ public class GameActivity extends AppCompatActivity {
         }
 
     };
-    
+
 }
