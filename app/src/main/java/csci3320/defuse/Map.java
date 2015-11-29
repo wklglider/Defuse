@@ -6,7 +6,7 @@ public class Map {
     Map() {
         mapName = "";
         mapImage = 0;
-        greekChar = 0;
+        greekChar = "";
     }
 
     //Constructor with name and image
@@ -16,7 +16,7 @@ public class Map {
     }
 
     //Constructor with name, image and character number
-    Map(String name, int image, int charNum) {
+    Map(String name, int image, String charNum) {
         mapName = name;
         mapImage = image;
         greekChar = charNum;
@@ -43,17 +43,17 @@ public class Map {
     }
 
     //Set Greek Character
-    public void setGreekChar(int num) {
-        greekChar = num;
+    public void setGreekChar(String str) {
+        greekChar = str;
     }
 
     //Get Greek Character
-    public int getGreekChar() {
+    public String getGreekChar() {
         return greekChar;
     }
 
     //Private members: mapName, mapImage, greekChar
     private String mapName;
     private int mapImage;
-    private int greekChar;
+    private String greekChar;
 }

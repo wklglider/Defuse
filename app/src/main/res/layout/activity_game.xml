@@ -144,7 +144,7 @@
             android:layout_width="25dp"
             android:layout_height="match_parent"
             android:layout_column="10"
-            android:background="@drawable/rope"
+            android:background="@drawable/fire_rope"
             android:contentDescription="@string/fuse" />
 
     </TableRow>

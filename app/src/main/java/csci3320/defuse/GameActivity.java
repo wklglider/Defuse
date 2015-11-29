@@ -27,6 +27,7 @@ public class GameActivity extends AppCompatActivity {
     ArrayList<Map> quesMapList = new ArrayList<>();
     Button[] grid = new Button[9];
     Button[] quesGrid = new Button[3];
+    String[] answer = new String[3];
     TextView timer;
     TextView roundCounter;
     int rCounter = 1;
@@ -113,6 +114,7 @@ public class GameActivity extends AppCompatActivity {
         gameCancelled = false;
         TimerCountDown();
         roundCounter.setText(String.format("%d / 10", rCounter));
+
         startNextRound = true;
         NextRound(defuseGame);
     }
@@ -168,17 +170,28 @@ public class GameActivity extends AppCompatActivity {
             Map[] mp = game.getMaps();
             GreekCharacter[] gc = game.getGreekChar();
 
+            //Reset burning lead
+            bomb.setBackgroundResource(R.drawable.bomb);
+            lead[0].setBackgroundResource(R.drawable.fire_rope);
+            for (int i = 1; i < lead.length; i++) {
+                lead[i].setBackgroundResource(R.drawable.rope);
+            }
+
             //Populate grid with maps and greek characters
             for (int i = 0; i < grid.length; i++) {
                 grid[i].setBackgroundResource(mp[i].getMapImage());
                 grid[i].setText(String.valueOf(gc[i].getCharName()));
+                mp[i].setGreekChar(gc[i].getCharName());
             }
 
             //Populate question grid with maps only
+            quesMapList.clear();
             Collections.addAll(quesMapList, mp);
             Collections.shuffle(quesMapList);
             for (int i = 0; i < quesGrid.length; i++) {
+                quesGrid[i].setText("");
                 quesGrid[i].setBackgroundResource(quesMapList.get(i).getMapImage());
+                answer[i] = quesMapList.get(i).getGreekChar();
             }
         }
     }
@@ -288,6 +301,13 @@ public class GameActivity extends AppCompatActivity {
         onBackPressed();
     }
 
+    public void checkAnswers() {
+        if(quesGrid[0].getText() == answer[0] && quesGrid[1].getText() == answer[1] && quesGrid[1].getText() == answer[1]) {
+            startNextRound = true;
+            NextRound(defuseGame);
+        }
+    }
+
     OnLongClickListener longListener = new OnLongClickListener()
     {
         @Override
@@ -327,6 +347,8 @@ public class GameActivity extends AppCompatActivity {
                 case DragEvent.ACTION_DROP:
                     TextView draggedText = (TextView)event.getLocalState();
                     dropText.setText(draggedText.getText());
+
+
                     break;
             }
 
