@@ -237,45 +237,56 @@ public class GameActivity extends AppCompatActivity {
     public void leadBurningEffect(long timeRemaining, long totalTime) {
         int percentage = (int)((double)timeRemaining / totalTime * 100.0);
         switch(percentage) {
+            case 99:
             case 95:
                 lead[0].setBackgroundResource(R.drawable.fire_rope);
                 break;
+            case 89:
             case 85:
                 lead[0].setBackgroundResource(0);
                 lead[1].setBackgroundResource(R.drawable.fire_rope);
                 break;
+            case 79:
             case 75:
                 lead[1].setBackgroundResource(0);
                 lead[2].setBackgroundResource(R.drawable.fire_rope);
                 break;
+            case 69:
             case 65:
                 lead[2].setBackgroundResource(0);
                 lead[3].setBackgroundResource(R.drawable.fire_rope);
                 break;
+            case 59:
             case 55:
                 lead[3].setBackgroundResource(0);
                 lead[4].setBackgroundResource(R.drawable.fire_rope);
                 break;
+            case 49:
             case 45:
                 lead[4].setBackgroundResource(0);
                 lead[5].setBackgroundResource(R.drawable.fire_rope);
                 break;
+            case 39:
             case 35:
                 lead[5].setBackgroundResource(0);
                 lead[6].setBackgroundResource(R.drawable.fire_rope);
                 break;
+            case 29:
             case 25:
                 lead[6].setBackgroundResource(0);
                 lead[7].setBackgroundResource(R.drawable.fire_rope);
                 break;
+            case 19:
             case 15:
                 lead[7].setBackgroundResource(0);
                 lead[8].setBackgroundResource(R.drawable.fire_rope);
                 break;
+            case 9:
             case 5:
                 lead[8].setBackgroundResource(0);
                 lead[9].setBackgroundResource(R.drawable.fire_rope);
                 break;
+            case 1:
             case 0:
                 lead[9].setBackgroundResource(0);
                 bomb.setBackgroundResource(R.drawable.small_boom);
@@ -302,7 +313,7 @@ public class GameActivity extends AppCompatActivity {
     }
 
     public void checkAnswers() {
-        if(quesGrid[0].getText() == answer[0] && quesGrid[1].getText() == answer[1] && quesGrid[1].getText() == answer[1]) {
+        if(quesGrid[0].getText() == answer[0] && quesGrid[1].getText() == answer[1] && quesGrid[2].getText() == answer[2]) {
             startNextRound = true;
             NextRound(defuseGame);
         }
@@ -348,7 +359,7 @@ public class GameActivity extends AppCompatActivity {
                     TextView draggedText = (TextView)event.getLocalState();
                     dropText.setText(draggedText.getText());
 
-
+                    checkAnswers();
                     break;
             }
 
