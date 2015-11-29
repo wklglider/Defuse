@@ -7,10 +7,8 @@ import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.os.CountDownTimer;
-import java.util.Timer;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.TimerTask;
 import java.util.concurrent.TimeUnit;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -32,13 +30,9 @@ public class GameActivity extends AppCompatActivity {
     TextView timer;
     TextView roundCounter;
     int rCounter = 1;
-<<<<<<< HEAD
     ImageView[] lead = new ImageView[10];
     ImageView bomb;
-
-    EditText response;
-=======
->>>>>>> refs/remotes/origin/master
+//    EditText response;
     Button btnHelp;
     Button btnHome;
 
@@ -115,9 +109,6 @@ public class GameActivity extends AppCompatActivity {
         //create new game
         defuseGame = new DefuseGame();
 
-        //clean up variables
-//        txtScore.setText("");
-
         //start the countdown timer and start the round
         gameCancelled = false;
         TimerCountDown();
@@ -133,7 +124,7 @@ public class GameActivity extends AppCompatActivity {
 
         if(index >= 0){
             msgTitle = "NEW HIGH SCORE!!!";
-            setScore();//*************************************
+            setScore();
         }
 
         //CREATE END GAME ALERT
@@ -199,7 +190,6 @@ public class GameActivity extends AppCompatActivity {
         new CountDownTimer(totalTime, 50) { // adjust the milli seconds here
 
             public void onTick(long millisUntilFinished) {
-<<<<<<< HEAD
                 timer.setText("" + String.format("%02d : %02d : %02d",
                                 TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished),
                                 TimeUnit.MILLISECONDS.toSeconds(millisUntilFinished)
@@ -210,14 +200,15 @@ public class GameActivity extends AppCompatActivity {
                 //Update burning lead images
                 leadBurningEffect(millisUntilFinished, totalTime);
 
-=======
                 timer.setText(String.format("%2d : %02d : %02d",
                         TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished),
                         TimeUnit.MILLISECONDS.toSeconds(millisUntilFinished)
                                 - TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished)),
                         TimeUnit.MILLISECONDS.toMillis(millisUntilFinished)
                                 - TimeUnit.SECONDS.toMillis(TimeUnit.MILLISECONDS.toSeconds(millisUntilFinished))));
->>>>>>> refs/remotes/origin/master
+
+                leadBurningEffect(millisUntilFinished,totalTime);
+
                 if(gameCancelled)
                     this.cancel();
             }
@@ -229,12 +220,8 @@ public class GameActivity extends AppCompatActivity {
         }.start();
     }
 
-<<<<<<< HEAD
     //Update burning lead images
     public void leadBurningEffect(long timeRemaining, long totalTime) {
-//        double test1 = (double)timeRemaining / totalTime;
-//        double test2 = test1 * 100;
-//        int percentage = (int)test2;
         int percentage = (int)((double)timeRemaining / totalTime * 100.0);
         switch(percentage) {
             case 95:
@@ -289,8 +276,6 @@ public class GameActivity extends AppCompatActivity {
 //        dbOp.putInformation(player,levelPlayed,score);
     }
 
-=======
->>>>>>> refs/remotes/origin/master
     public void setScore() {
 
     }
