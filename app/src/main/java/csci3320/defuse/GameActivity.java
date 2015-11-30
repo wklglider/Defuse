@@ -12,8 +12,6 @@ import android.os.CountDownTimer;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.concurrent.TimeUnit;
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.ClipData;
 import android.view.DragEvent;
 import android.view.View.OnDragListener;
@@ -134,6 +132,11 @@ public class GameActivity extends AppCompatActivity {
         finish();
         startActivity(gameOver);
     }
+    public void gameWin(){
+        Intent gameWin = new Intent(this,GameWinActivity.class);
+        finish();
+        startActivity(gameWin);
+    }
 
     //Initial next round
     public void NextRound(DefuseGame game) {
@@ -171,7 +174,7 @@ public class GameActivity extends AppCompatActivity {
     //Start timer count down
     public void TimerCountDown (){
         final TextView timer = (TextView) findViewById( R.id.timerContent_textView );
-        final long totalTime = 9000;
+        final long totalTime = 90000;
         new CountDownTimer(totalTime, 50) { // adjust the milli seconds here
 
             public void onTick(long millisUntilFinished) {
@@ -317,8 +320,9 @@ public class GameActivity extends AppCompatActivity {
 
         if(ansResult[0] && ansResult[1] && ansResult[2]) {
             rCounter++;
-            if(rCounter == 5) {
-                //***************************************************************************  GameOverActivity Succeed only
+            if(rCounter == 1) {
+                //***************************************************************************  GameWinActivity Succeed only
+                gameWin();
             } else {
                 startNextRound = true;
                 NextRound(defuseGame);

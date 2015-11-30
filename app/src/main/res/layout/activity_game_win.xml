@@ -2,15 +2,15 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="csci3320.defuse.GameOverActivity"
-    android:background="#000000">
+    tools:context="csci3320.defuse.GameWinActivity"
+    android:background="#ffffff">
 
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/imageView"
+        android:id="@+id/imageView3"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
-        android:src="@drawable/bg_game_over"
-        android:contentDescription="@string/gameOver" />
+        android:src="@drawable/bg_game_win"
+        android:contentDescription="@string/gameWin" />
 </RelativeLayout>
