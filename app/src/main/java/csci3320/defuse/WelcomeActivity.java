@@ -23,11 +23,13 @@ public class WelcomeActivity extends AppCompatActivity {
 
     public void loadHelpPage(View view) {
         Intent help = new Intent(this,HelpActivity.class);
+        finish();
         startActivity(help);
     }
 
     public void loadScorePage(View view) {
         Intent score = new Intent(this,ScoreActivity.class);
+        finish();
         startActivity(score);
     }
 
@@ -36,6 +38,7 @@ public class WelcomeActivity extends AppCompatActivity {
         String name = editTxt.getText().toString();
         Intent newGame = new Intent(this,GameActivity.class);
         newGame.putExtra("name", name);
+        finish();
         startActivity(newGame);
     }
     public void nameWatch() {
