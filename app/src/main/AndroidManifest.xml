@@ -20,6 +20,10 @@
         <activity android:name=".ScoreActivity" />
         <activity android:name=".FinishActivity" >
         </activity>
+        <activity android:name=".GameOverActivity" >
+        </activity>
+        <activity android:name=".GameWinActivity" >
+        </activity>
     </application>
 
 </manifest>
