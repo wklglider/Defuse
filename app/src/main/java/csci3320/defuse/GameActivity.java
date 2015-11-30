@@ -1,5 +1,6 @@
 package csci3320.defuse;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -129,46 +130,9 @@ public class GameActivity extends AppCompatActivity {
     }
 
     public void gameOver(){
-        String msgTitle = "GAME OVER";
-        int finalScore = defuseGame.getScore();
-        int index = isInTopRank(finalScore);
-
-        //***************************************************************************  GameOverActivity Fail only
-
-        if(index >= 0){
-            msgTitle = "NEW HIGH SCORE!!!";
-            setScore();
-        }
-
-        //CREATE END GAME ALERT
-        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
-
-        // set title
-        alertDialogBuilder.setTitle(msgTitle);
-
-        // set dialog message
-        alertDialogBuilder
-                .setMessage("Final Score: " + finalScore + "\n\nPLAY AGAIN?")
-                .setCancelable(false)
-                .setPositiveButton("Yes",new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog,int id) {
-                        //start new game
-                        startNewGame();
-                    }
-                })
-                .setNegativeButton("No", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        //end game and go back to main menu
-                        GameActivity.this.finish();
-                    }
-                });
-
-        // create alert dialog
-        AlertDialog alertDialog = alertDialogBuilder.create();
-
-        // show it
-        alertDialog.show();
-
+        Intent gameOver = new Intent(this,GameOverActivity.class);
+        finish();
+        startActivity(gameOver);
     }
 
     //Initial next round
@@ -207,11 +171,11 @@ public class GameActivity extends AppCompatActivity {
     //Start timer count down
     public void TimerCountDown (){
         final TextView timer = (TextView) findViewById( R.id.timerContent_textView );
-        final long totalTime = 90000;
+        final long totalTime = 9000;
         new CountDownTimer(totalTime, 50) { // adjust the milli seconds here
 
             public void onTick(long millisUntilFinished) {
-                timer.setText("" + String.format("%02d : %02d : %02d",
+                timer.setText(String.format("%02d : %02d : %02d",
                                 TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished),
                                 TimeUnit.MILLISECONDS.toSeconds(millisUntilFinished)
                                         - TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished)),
