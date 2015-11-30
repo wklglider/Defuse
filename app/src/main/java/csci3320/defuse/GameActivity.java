@@ -142,7 +142,7 @@ public class GameActivity extends AppCompatActivity {
             startNextRound = false;
 
             //Refresh round count
-            roundCounter.setText(String.format("%d / 10", rCounter));
+            roundCounter.setText(String.format("%d / 5", rCounter));
 
             //Get maps and Greek Character
             Map[] mp = game.getMaps();
@@ -317,7 +317,7 @@ public class GameActivity extends AppCompatActivity {
 
         if(ansResult[0] && ansResult[1] && ansResult[2]) {
             rCounter++;
-            if(rCounter == 10) {
+            if(rCounter == 5) {
                 //***************************************************************************  GameOverActivity Succeed only
             } else {
                 startNextRound = true;
