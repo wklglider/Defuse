@@ -33,7 +33,7 @@ public class GameOverActivity extends AppCompatActivity {
         // set dialog message
         alertDialogBuilder
                 .setCancelable(false)
-                .setPositiveButton("Yes",new DialogInterface.OnClickListener() {
+                .setPositiveButton("Play Again?",new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog,int id) {
                         //start new game
                         finish();

@@ -320,7 +320,7 @@ public class GameActivity extends AppCompatActivity {
 
         if(ansResult[0] && ansResult[1] && ansResult[2]) {
             rCounter++;
-            if(rCounter == 1) {
+            if(rCounter == 5) {
                 //***************************************************************************  GameWinActivity Succeed only
                 gameWin();
             } else {
