@@ -20,7 +20,7 @@ public class GameWinActivity extends AppCompatActivity {
 
     public void gameWin(){
         final Intent newGame = new Intent(this,GameActivity.class);
-        final Intent welcome = new Intent(this,WelcomeActivity.class);
+        final Intent score = new Intent(this,ScoreActivity.class);
         String msgTitle = "You Win";
 
         //CREATE END GAME ALERT
@@ -32,18 +32,18 @@ public class GameWinActivity extends AppCompatActivity {
         // set dialog message
         alertDialogBuilder
                 .setCancelable(false)
-                .setPositiveButton("Yes",new DialogInterface.OnClickListener() {
+                .setPositiveButton("Play Again?",new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog,int id) {
                         //start new game
                         finish();
                         startActivity(newGame);
                     }
                 })
-                .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                .setNegativeButton("Score", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         //end game and go back to main menu
                         finish();
-                        startActivity(welcome);
+                        startActivity(score);
                     }
                 });
 
