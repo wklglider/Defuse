@@ -1,5 +1,6 @@
 package csci3320.defuse;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -11,8 +12,6 @@ import android.os.CountDownTimer;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.concurrent.TimeUnit;
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.ClipData;
 import android.view.DragEvent;
 import android.view.View.OnDragListener;
@@ -129,46 +128,14 @@ public class GameActivity extends AppCompatActivity {
     }
 
     public void gameOver(){
-        String msgTitle = "GAME OVER";
-        int finalScore = defuseGame.getScore();
-        int index = isInTopRank(finalScore);
-
-        //***************************************************************************  GameOverActivity Fail only
-
-        if(index >= 0){
-            msgTitle = "NEW HIGH SCORE!!!";
-            setScore();
-        }
-
-        //CREATE END GAME ALERT
-        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
-
-        // set title
-        alertDialogBuilder.setTitle(msgTitle);
-
-        // set dialog message
-        alertDialogBuilder
-                .setMessage("Final Score: " + finalScore + "\n\nPLAY AGAIN?")
-                .setCancelable(false)
-                .setPositiveButton("Yes",new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog,int id) {
-                        //start new game
-                        startNewGame();
-                    }
-                })
-                .setNegativeButton("No", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        //end game and go back to main menu
-                        GameActivity.this.finish();
-                    }
-                });
-
-        // create alert dialog
-        AlertDialog alertDialog = alertDialogBuilder.create();
-
-        // show it
-        alertDialog.show();
-
+        Intent gameOver = new Intent(this,GameOverActivity.class);
+        finish();
+        startActivity(gameOver);
+    }
+    public void gameWin(){
+        Intent gameWin = new Intent(this,GameWinActivity.class);
+        finish();
+        startActivity(gameWin);
     }
 
     //Initial next round
@@ -211,7 +178,7 @@ public class GameActivity extends AppCompatActivity {
         new CountDownTimer(totalTime, 50) { // adjust the milli seconds here
 
             public void onTick(long millisUntilFinished) {
-                timer.setText("" + String.format("%02d : %02d : %02d",
+                timer.setText(String.format("%02d : %02d : %02d",
                                 TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished),
                                 TimeUnit.MILLISECONDS.toSeconds(millisUntilFinished)
                                         - TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished)),
@@ -353,8 +320,9 @@ public class GameActivity extends AppCompatActivity {
 
         if(ansResult[0] && ansResult[1] && ansResult[2]) {
             rCounter++;
-            if(rCounter == 5) {
-                //***************************************************************************  GameOverActivity Succeed only
+            if(rCounter == 1) {
+                //***************************************************************************  GameWinActivity Succeed only
+                gameWin();
             } else {
                 startNextRound = true;
                 NextRound(defuseGame);
