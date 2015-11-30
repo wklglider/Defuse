@@ -50,6 +50,8 @@ public class ScoreActivity extends AppCompatActivity {
     }
 
     public void loadWelcomePage(View view) {
-        onBackPressed();
+        Intent welcome = new Intent(this,WelcomeActivity.class);
+        finish();
+        startActivity(welcome);
     }
 }
