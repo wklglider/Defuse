@@ -21,6 +21,7 @@ import android.widget.Button;
 
 
 public class GameActivity extends AppCompatActivity {
+    public String playerName;
     public DefuseGame defuseGame;
     boolean gameCancelled = false;
     boolean startNextRound;
@@ -43,6 +44,9 @@ public class GameActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_game);
+
+        Intent i = getIntent();
+        playerName = i.getStringExtra("name");
 
         findViewById(R.id.mapButton0).setOnLongClickListener(longListener);
         findViewById(R.id.mapButton1).setOnLongClickListener(longListener);
@@ -97,12 +101,6 @@ public class GameActivity extends AppCompatActivity {
 
         //Game start
         startNewGame();
-    }
-
-    @Override
-    public void onBackPressed(){
-        gameCancelled = true;
-        this.finish();
     }
 
     //Start a game
@@ -301,7 +299,15 @@ public class GameActivity extends AppCompatActivity {
         return rank;
     }
     public void exit_game(View view) {
-        onBackPressed();
+        Intent welcome = new Intent(this,WelcomeActivity.class);
+        finish();
+        startActivity(welcome);
+    }
+
+    public void loadHelpPage(View view) {
+        Intent help = new Intent(this,HelpActivity.class);
+        finish();
+        startActivity(help);
     }
 
     public void checkAnswers() {
