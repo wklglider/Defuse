@@ -24,6 +24,7 @@ public class GameActivity extends AppCompatActivity {
     public String playerName;
     public DefuseGame defuseGame;
     boolean gameCancelled = false;
+    boolean gameWin = false;
     boolean startNextRound;
     ArrayList<Map> quesMapList = new ArrayList<>();
     Button[] grid = new Button[9];
@@ -31,6 +32,7 @@ public class GameActivity extends AppCompatActivity {
     String[] answer = new String[3];
     boolean[] ansResult = new boolean[3];
     TextView timer;
+    int remainingTime;
     TextView roundCounter;
     int rCounter = 1;
     ImageView[] lead = new ImageView[10];
@@ -111,6 +113,7 @@ public class GameActivity extends AppCompatActivity {
 
         //start the countdown timer and start the round
         gameCancelled = false;
+        gameWin = false;
         TimerCountDown();
         rCounter = 1;
 
@@ -197,6 +200,11 @@ public class GameActivity extends AppCompatActivity {
 
                 if(gameCancelled)
                     this.cancel();
+
+                if(gameWin) {
+                    remainingTime = (int) millisUntilFinished;
+                    setScore = remainingTime;
+                }
             }
 
             public void onFinish() {
@@ -290,7 +298,7 @@ public class GameActivity extends AppCompatActivity {
 //        dbOp.putInformation(player,levelPlayed,score);
     }
 
-    public void setScore() {
+    public void setScore(int time) {
 
     }
 
@@ -327,7 +335,7 @@ public class GameActivity extends AppCompatActivity {
         if(ansResult[0] && ansResult[1] && ansResult[2]) {
             rCounter++;
             if(rCounter == 5) {
-                //***************************************************************************  GameWinActivity Succeed only
+                gameWin = true;
                 gameWin();
             } else {
                 startNextRound = true;
@@ -365,11 +373,9 @@ public class GameActivity extends AppCompatActivity {
             switch(dragEvent)
             {
                 case DragEvent.ACTION_DRAG_ENTERED:
-                    //dropText.setTextColor(Color.GREEN);
                     break;
 
                 case DragEvent.ACTION_DRAG_EXITED:
-                    //dropText.setTextColor(Color.RED);
                     break;
 
                 case DragEvent.ACTION_DROP:
