@@ -168,7 +168,8 @@
                 android:layout_column="1"
                 android:textStyle="bold"
                 android:textSize="@dimen/abc_dialog_padding_top_material"
-                android:textColor="#ff7b02" />
+                android:textColor="#ff7b02"
+                android:layout_margin="1dp" />
 
             <Button
                 android:id="@+id/mapButton1"
@@ -178,7 +179,8 @@
                 android:layout_column="2"
                 android:textColor="#ff7b02"
                 android:textStyle="bold"
-                android:textSize="@dimen/abc_dialog_padding_top_material" />
+                android:textSize="@dimen/abc_dialog_padding_top_material"
+                android:layout_margin="1dp" />
 
             <Button
                 android:id="@+id/mapButton2"
@@ -188,7 +190,8 @@
                 android:layout_column="3"
                 android:textColor="#ff7b02"
                 android:textStyle="bold"
-                android:textSize="@dimen/abc_dialog_padding_top_material" />
+                android:textSize="@dimen/abc_dialog_padding_top_material"
+                android:layout_margin="1dp" />
         </TableRow>
 
         <TableRow
@@ -203,7 +206,8 @@
                 android:layout_column="1"
                 android:textColor="#ff7b02"
                 android:textStyle="bold"
-                android:textSize="@dimen/abc_dialog_padding_top_material" />
+                android:textSize="@dimen/abc_dialog_padding_top_material"
+                android:layout_margin="1dp" />
 
             <Button
                 android:id="@+id/mapButton4"
@@ -213,7 +217,8 @@
                 android:layout_column="2"
                 android:textColor="#ff7b02"
                 android:textStyle="bold"
-                android:textSize="@dimen/abc_dialog_padding_top_material" />
+                android:textSize="@dimen/abc_dialog_padding_top_material"
+                android:layout_margin="1dp" />
 
             <Button
                 android:id="@+id/mapButton5"
@@ -223,7 +228,8 @@
                 android:layout_column="3"
                 android:textColor="#ff7b02"
                 android:textStyle="bold"
-                android:textSize="@dimen/abc_dialog_padding_top_material" />
+                android:textSize="@dimen/abc_dialog_padding_top_material"
+                android:layout_margin="1dp" />
         </TableRow>
 
         <TableRow
@@ -238,7 +244,8 @@
                 android:layout_column="1"
                 android:textColor="#ff7b02"
                 android:textStyle="bold"
-                android:textSize="@dimen/abc_dialog_padding_top_material" />
+                android:textSize="@dimen/abc_dialog_padding_top_material"
+                android:layout_margin="1dp" />
 
             <Button
                 android:id="@+id/mapButton7"
@@ -248,7 +255,8 @@
                 android:layout_column="2"
                 android:textColor="#ff7b02"
                 android:textStyle="bold"
-                android:textSize="@dimen/abc_dialog_padding_top_material" />
+                android:textSize="@dimen/abc_dialog_padding_top_material"
+                android:layout_margin="1dp" />
 
             <Button
                 android:id="@+id/mapButton8"
@@ -258,7 +266,8 @@
                 android:layout_column="3"
                 android:textColor="#ff7b02"
                 android:textStyle="bold"
-                android:textSize="@dimen/abc_dialog_padding_top_material" />
+                android:textSize="@dimen/abc_dialog_padding_top_material"
+                android:layout_margin="1dp" />
         </TableRow>
 
     </TableLayout>

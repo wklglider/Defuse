@@ -203,7 +203,6 @@ public class GameActivity extends AppCompatActivity {
 
                 if(gameWin) {
                     remainingTime = (int) millisUntilFinished;
-                    setScore = remainingTime;
                 }
             }
 
@@ -292,20 +291,11 @@ public class GameActivity extends AppCompatActivity {
         }
     }
 
-    //Calculate score
-    public void calculateScore(String player, long remainingTime, int roundNumber){
-//        DatabaseOperations dbOp = new DatabaseOperations(this);
-//        dbOp.putInformation(player,levelPlayed,score);
+    public void setScore(String player, int time) {
+        DatabaseOperations dbOp = new DatabaseOperations(this);
+        dbOp.putInformation(player,time);
     }
 
-    public void setScore(int time) {
-
-    }
-
-    public int isInTopRank(int score) {
-        int rank = -1;
-        return rank;
-    }
     public void exit_game(View view) {
         Intent welcome = new Intent(this,WelcomeActivity.class);
         finish();
@@ -336,6 +326,7 @@ public class GameActivity extends AppCompatActivity {
             rCounter++;
             if(rCounter == 5) {
                 gameWin = true;
+                setScore(playerName, remainingTime);
                 gameWin();
             } else {
                 startNextRound = true;
