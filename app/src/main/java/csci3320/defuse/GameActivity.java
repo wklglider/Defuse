@@ -297,12 +297,14 @@ public class GameActivity extends AppCompatActivity {
 
     public void exit_game(View view) {
         Intent welcome = new Intent(this,WelcomeActivity.class);
+        countDoownTimer.cancel();
         finish();
         startActivity(welcome);
     }
 
     public void loadHelpPage(View view) {
         Intent help = new Intent(this,HelpActivity.class);
+        countDoownTimer.cancel();
         finish();
         startActivity(help);
     }
