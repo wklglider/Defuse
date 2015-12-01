@@ -32,7 +32,8 @@ public class GameActivity extends AppCompatActivity {
     String[] answer = new String[3];
     boolean[] ansResult = new boolean[3];
     TextView timer;
-    int remainingTime;
+    CountDownTimer countDoownTimer;
+    int remainingTime = Integer.MAX_VALUE;
     TextView roundCounter;
     int rCounter = 1;
     ImageView[] lead = new ImageView[10];
@@ -176,7 +177,7 @@ public class GameActivity extends AppCompatActivity {
     public void TimerCountDown (){
         final TextView timer = (TextView) findViewById( R.id.timerContent_textView );
         final long totalTime = 90000;
-        new CountDownTimer(totalTime, 50) { // adjust the milli seconds here
+        countDoownTimer = new CountDownTimer(totalTime, 50) { // adjust the milli seconds here
 
             public void onTick(long millisUntilFinished) {
                 timer.setText(String.format("%02d : %02d : %02d",
@@ -201,9 +202,7 @@ public class GameActivity extends AppCompatActivity {
                 if(gameCancelled)
                     this.cancel();
 
-                if(gameWin) {
                     remainingTime = (int) millisUntilFinished;
-                }
             }
 
             public void onFinish() {
@@ -327,6 +326,7 @@ public class GameActivity extends AppCompatActivity {
             if(rCounter == 5) {
                 gameWin = true;
                 setScore(playerName, remainingTime);
+                countDoownTimer.cancel();
                 gameWin();
             } else {
                 startNextRound = true;
