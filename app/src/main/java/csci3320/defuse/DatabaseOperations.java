@@ -15,10 +15,6 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-
-/**
- * Created by kuilin on 4/19/15.
- */
 public class DatabaseOperations extends SQLiteOpenHelper {
     // All Static variables
     // Database Version
