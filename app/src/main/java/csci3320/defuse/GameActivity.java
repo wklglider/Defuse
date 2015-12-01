@@ -32,7 +32,8 @@ public class GameActivity extends AppCompatActivity {
     String[] answer = new String[3];
     boolean[] ansResult = new boolean[3];
     TextView timer;
-    int remainingTime;
+    CountDownTimer countDoownTimer;
+    int remainingTime = Integer.MAX_VALUE;
     TextView roundCounter;
     int rCounter = 1;
     ImageView[] lead = new ImageView[10];
@@ -176,7 +177,7 @@ public class GameActivity extends AppCompatActivity {
     public void TimerCountDown (){
         final TextView timer = (TextView) findViewById( R.id.timerContent_textView );
         final long totalTime = 90000;
-        new CountDownTimer(totalTime, 50) { // adjust the milli seconds here
+        countDoownTimer = new CountDownTimer(totalTime, 50) { // adjust the milli seconds here
 
             public void onTick(long millisUntilFinished) {
                 timer.setText(String.format("%02d : %02d : %02d",
@@ -201,10 +202,7 @@ public class GameActivity extends AppCompatActivity {
                 if(gameCancelled)
                     this.cancel();
 
-                if(gameWin) {
                     remainingTime = (int) millisUntilFinished;
-                    setScore = remainingTime;
-                }
             }
 
             public void onFinish() {
@@ -292,28 +290,21 @@ public class GameActivity extends AppCompatActivity {
         }
     }
 
-    //Calculate score
-    public void calculateScore(String player, long remainingTime, int roundNumber){
-//        DatabaseOperations dbOp = new DatabaseOperations(this);
-//        dbOp.putInformation(player,levelPlayed,score);
+    public void setScore(String player, int time) {
+        DatabaseOperations dbOp = new DatabaseOperations(this);
+        dbOp.putInformation(player,time);
     }
 
-    public void setScore(int time) {
-
-    }
-
-    public int isInTopRank(int score) {
-        int rank = -1;
-        return rank;
-    }
     public void exit_game(View view) {
         Intent welcome = new Intent(this,WelcomeActivity.class);
+        countDoownTimer.cancel();
         finish();
         startActivity(welcome);
     }
 
     public void loadHelpPage(View view) {
         Intent help = new Intent(this,HelpActivity.class);
+        countDoownTimer.cancel();
         finish();
         startActivity(help);
     }
@@ -336,6 +327,8 @@ public class GameActivity extends AppCompatActivity {
             rCounter++;
             if(rCounter == 5) {
                 gameWin = true;
+                setScore(playerName, remainingTime);
+                countDoownTimer.cancel();
                 gameWin();
             } else {
                 startNextRound = true;

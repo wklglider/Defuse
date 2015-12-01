@@ -15,10 +15,6 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-
-/**
- * Created by kuilin on 4/19/15.
- */
 public class DatabaseOperations extends SQLiteOpenHelper {
     // All Static variables
     // Database Version
@@ -59,12 +55,12 @@ public class DatabaseOperations extends SQLiteOpenHelper {
 
     // All Operations (Create, Read, Update, Delete)
     // Adding new user information
-    public void putInformation(String name, int level, int score) {
+    public void putInformation(String name, int score) {
         SQLiteDatabase sql = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
         cv.put(USER_NAME, name); // User name
         cv.put(USER_SCORE, score); // User score
-        Log.d("Database Insertion", "Inserting " + name + ", " + level + ", " + score);
+        Log.d("Database Insertion", "Inserting " + name + ", " + score);
         // Inserting row
         sql.insert(TABLE_NAME, null, cv);
         // Closing database connection
