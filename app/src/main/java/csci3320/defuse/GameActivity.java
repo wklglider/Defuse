@@ -337,6 +337,12 @@ public class GameActivity extends AppCompatActivity {
         }
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        countDoownTimer.cancel();
+    }
+
     OnLongClickListener longListener = new OnLongClickListener()
     {
         @Override
