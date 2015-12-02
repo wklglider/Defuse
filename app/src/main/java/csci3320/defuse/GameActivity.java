@@ -349,7 +349,7 @@ public class GameActivity extends AppCompatActivity {
         public boolean onLongClick(View v)
         {
             TextView fruit = (TextView) v;
-            Toast.makeText(GameActivity.this, "Text long clicked - " +fruit.getText() , Toast.LENGTH_SHORT).show();
+            //Toast.makeText(GameActivity.this, "Text long clicked - " +fruit.getText() , Toast.LENGTH_SHORT).show();
 
             View.DragShadowBuilder myShadowBuilder = new View.DragShadowBuilder(v);
 
